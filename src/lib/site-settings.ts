@@ -20,6 +20,10 @@ export type ResolvedSiteSettings = {
   defaultTitle: string;
   defaultDescription: string;
   bankAccounts: BankAccount[];
+  googleSiteVerification: string;
+  bingSiteVerification: string;
+  whatsappNumber: string;
+  whatsappMessage: string;
 };
 
 function fallbackSettings(): ResolvedSiteSettings {
@@ -34,6 +38,10 @@ function fallbackSettings(): ResolvedSiteSettings {
     defaultTitle: staticSiteConfig.defaultTitle,
     defaultDescription: staticSiteConfig.defaultDescription,
     bankAccounts: staticBankAccounts.map((b) => ({ ...b, rows: b.rows.map(([k, v]) => [k, v]) })),
+    googleSiteVerification: "",
+    bingSiteVerification: "",
+    whatsappNumber: "",
+    whatsappMessage: "Thank you for reaching out to Florence Foundation. We welcome your Support",
   };
 }
 
@@ -48,6 +56,10 @@ type SiteSettingsRow = {
   default_seo_description: string | null;
   bank_uk: { region: string; country: string; currency: string; rows: [string, string][] } | null;
   bank_ng: { region: string; country: string; currency: string; rows: [string, string][] } | null;
+  google_site_verification: string | null;
+  bing_site_verification: string | null;
+  whatsapp_number: string | null;
+  whatsapp_message: string | null;
 };
 
 /**
@@ -79,6 +91,10 @@ export async function getSiteSettings(): Promise<ResolvedSiteSettings> {
       defaultTitle: data.default_seo_title || fallback.defaultTitle,
       defaultDescription: data.default_seo_description || fallback.defaultDescription,
       bankAccounts: bankAccounts.length ? bankAccounts : fallback.bankAccounts,
+      googleSiteVerification: data.google_site_verification || "",
+      bingSiteVerification: data.bing_site_verification || "",
+      whatsappNumber: data.whatsapp_number || "",
+      whatsappMessage: data.whatsapp_message || fallback.whatsappMessage,
     };
   } catch {
     return fallbackSettings();

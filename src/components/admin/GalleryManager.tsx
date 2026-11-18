@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Image from "next/image";
-import ImageUploader from "@/components/admin/ImageUploader";
+import MultiImageUploader from "@/components/admin/MultiImageUploader";
 import {
   createGalleryAlbum,
   deleteGalleryAlbum,
@@ -28,7 +28,6 @@ type Album = {
 
 function AlbumPanel({ album }: { album: Album }) {
   const [pending, startTransition] = useTransition();
-  const [newAlt, setNewAlt] = useState("");
 
   return (
     <div className="rounded-2xl border border-border bg-white p-5">
@@ -95,20 +94,16 @@ function AlbumPanel({ album }: { album: Album }) {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-end gap-3 border-t border-border-4 pt-4">
-        <div className="flex-1">
-          <ImageUploader
-            pathPrefix={`gallery/${album.id}`}
-            label="Uploading photo"
-            onUploaded={(url) => startTransition(() => addGalleryImage(album.id, url, newAlt))}
-          />
-        </div>
-        <input
-          value={newAlt}
-          onChange={(e) => setNewAlt(e.target.value)}
-          placeholder="Alt text for next upload"
-          className="h-9 rounded-lg border border-border-2 px-3 text-xs"
+      <div className="border-t border-border-4 pt-4">
+        <MultiImageUploader
+          pathPrefix={`gallery/${album.id}`}
+          label="Uploading photos"
+          onUploaded={({ url, alt }) => addGalleryImage(album.id, url, alt)}
         />
+        <p className="mt-1 text-xs text-ink-600">
+          Alt text is filled in from each file name — edit any photo&apos;s alt text above after
+          uploading.
+        </p>
       </div>
       {pending && <p className="mt-2 text-xs text-ink-600">Saving…</p>}
     </div>

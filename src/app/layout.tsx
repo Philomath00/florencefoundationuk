@@ -5,6 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BackToTop from "@/components/layout/BackToTop";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import { siteConfig } from "@/content/site";
 import { getSiteSettings } from "@/lib/site-settings";
 
@@ -48,8 +50,12 @@ export async function generateMetadata(): Promise<Metadata> {
       description: settings.defaultDescription,
       images: [siteConfig.ogImage],
     },
-    icons: {
-      icon: "/images/symbol.png",
+    // Favicon / apple-icon are served via the src/app/icon.png,
+    // apple-icon.png and favicon.ico file conventions — no icons field
+    // needed here, and one here would conflict with/duplicate those.
+    verification: {
+      google: settings.googleSiteVerification || undefined,
+      other: settings.bingSiteVerification ? { "msvalidate.01": settings.bingSiteVerification } : undefined,
     },
     // Only the production deployment should ever be indexed — preview and
     // local builds get noindex so they never compete with the real domain.
@@ -95,6 +101,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
         </main>
         <Footer settings={settings} />
+        <BackToTop />
+        <WhatsAppButton number={settings.whatsappNumber} message={settings.whatsappMessage} />
         <Analytics />
         <SpeedInsights />
       </body>

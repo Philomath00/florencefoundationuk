@@ -16,10 +16,15 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   details), Contact Us (working form with client + server validation).
 - A public **Blog** (`/blog`, `/blog/[slug]`) with Markdown content and `BlogPosting`
   JSON-LD, fully admin-managed (see below).
-- A real **homepage hero slider**: auto-advancing, swipeable, pausable, respects
-  `prefers-reduced-motion`, admin-managed — falls back to the original static hero if
-  no slides have been added yet.
+- A real **homepage hero image slider**: the right-hand image auto-advances (and
+  respects `prefers-reduced-motion`), admin-managed from `/admin/slider` — the
+  heading/copy/buttons on the left are fixed design content, never per-slide.
+- A floating **"back to top" button** (appears after scrolling) and a floating
+  **WhatsApp button** (bottom-left, hidden unless a number is set in Website Settings)
+  that opens a chat with an admin-configurable default message.
 - Shared `Header` (sticky, scroll-aware, mobile drawer with focus trap) and `Footer`.
+  "Blog" is intentionally not in the nav (matches the approved design) — `/blog` and
+  its admin CMS still work, just unlinked until wanted there.
 - A real `/api/contact` route: Zod validation, a honeypot field, per-IP rate limiting, a
   Supabase insert, and a Resend email send — verified end-to-end with live test
   submissions. The database save and the email send are independent, so a real enquiry
@@ -32,11 +37,15 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   - **Overview** — real content counts (no fabricated analytics); links out to the
     Vercel Analytics dashboard for full visitor/pageview/traffic-source numbers.
   - **Contact Submissions** — view, mark read/resolved, delete.
-  - **Website Settings** — org info, contact details, social links, default SEO, both
-    bank accounts. The public Footer/Contact/Support pages read from here (falling
-    back to `src/content/site.ts` if Supabase is ever unavailable).
-  - **Hero Slider** — upload/edit/reorder/publish/delete slides.
-  - **Gallery** — albums + image upload, publish toggle per image.
+  - **Website Settings** — org info, contact details, social links, default SEO,
+    Google/Bing search verification codes, the WhatsApp button's number and default
+    message, and both bank accounts. The public Footer/Contact/Support pages (and the
+    page `<head>`) read from here, falling back to `src/content/site.ts` if Supabase
+    is ever unavailable.
+  - **Hero Slider** — upload/edit/reorder/publish/delete slide images.
+  - **Gallery** — albums + multi-image upload (select several files at once — alt
+    text is pre-filled from each file name and editable afterward), publish toggle
+    per image.
   - **Projects** — full CRUD on all six programme pages (objectives, activities,
     photos, giving CTA) — these were static files, now genuinely admin-editable.
   - **Blog** — full CRUD: Markdown content, featured image, tags, draft/published/
@@ -57,6 +66,12 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
 - SEO foundations: per-page metadata, Organization (NGO), BreadcrumbList and
   BlogPosting JSON-LD, `sitemap.xml` (incl. published blog posts), and `robots.ts` that
   disallows indexing on anything that isn't the production Vercel deployment.
+  Google Search Console / Bing Webmaster Tools verification codes can be pasted into
+  Website Settings whenever you add the site there — no code change needed.
+- A proper **favicon** (the brand mark, not the default Next.js/Vercel icon the
+  scaffold ships with) and a branded **Open Graph image** (`public/images/og-image.jpg`)
+  so link previews in iMessage/WhatsApp/Slack/social media show the Florence
+  Foundation logo and site name instead of a generic icon.
 
 **Not built yet:** blog category UI (the `blog_categories` table exists but has no
 admin screen yet — posts currently only have free-text tags), a way to add further

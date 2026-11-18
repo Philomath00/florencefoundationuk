@@ -22,7 +22,7 @@ export const siteConfig = {
     "healthcare charity Africa",
     "charitable giving UK",
   ],
-  ogImage: "/images/symbol.png",
+  ogImage: "/images/og-image.jpg",
   email: "info@florencefoundation.co.uk",
   // PLACEHOLDER — sample data from the design export, not yet confirmed.
   phone: "+44 (0)20 0000 0000",
