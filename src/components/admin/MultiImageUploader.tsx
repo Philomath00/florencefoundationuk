@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { compressImage } from "@/lib/compress-image";
 
 function filenameToAlt(filename: string): string {
   return filename
@@ -38,9 +39,10 @@ export default function MultiImageUploader({
 
     for (const file of toUpload) {
       try {
-        const ext = file.name.split(".").pop() || "jpg";
+        const optimized = await compressImage(file);
+        const ext = optimized.name.split(".").pop() || "jpg";
         const path = `${pathPrefix}/${crypto.randomUUID()}.${ext}`;
-        const { error: uploadError } = await supabase.storage.from("site-media").upload(path, file, {
+        const { error: uploadError } = await supabase.storage.from("site-media").upload(path, optimized, {
           cacheControl: "3600",
           upsert: false,
         });

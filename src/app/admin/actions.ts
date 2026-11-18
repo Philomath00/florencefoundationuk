@@ -190,6 +190,21 @@ export async function deleteGalleryAlbum(id: string) {
   revalidatePath("/gallery");
 }
 
+export async function reorderGalleryAlbum(id: string, direction: "up" | "down", albumIds: string[]) {
+  const supabase = await createRscSupabaseClient();
+  const index = albumIds.indexOf(id);
+  const swapWith = direction === "up" ? index - 1 : index + 1;
+  if (swapWith < 0 || swapWith >= albumIds.length) return;
+  const otherId = albumIds[swapWith];
+
+  await Promise.all([
+    supabase.from("gallery_albums").update({ sort_order: swapWith }).eq("id", id),
+    supabase.from("gallery_albums").update({ sort_order: index }).eq("id", otherId),
+  ]);
+  revalidatePath("/admin/gallery");
+  revalidatePath("/gallery");
+}
+
 export async function addGalleryImage(albumId: string, imageUrl: string, alt: string) {
   const supabase = await createRscSupabaseClient();
   const { count } = await supabase
@@ -229,6 +244,21 @@ export async function deleteGalleryImage(id: string) {
   const supabase = await createRscSupabaseClient();
   const { error } = await supabase.from("gallery_images").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  revalidatePath("/admin/gallery");
+  revalidatePath("/gallery");
+}
+
+export async function reorderGalleryImage(id: string, direction: "up" | "down", imageIds: string[]) {
+  const supabase = await createRscSupabaseClient();
+  const index = imageIds.indexOf(id);
+  const swapWith = direction === "up" ? index - 1 : index + 1;
+  if (swapWith < 0 || swapWith >= imageIds.length) return;
+  const otherId = imageIds[swapWith];
+
+  await Promise.all([
+    supabase.from("gallery_images").update({ sort_order: swapWith }).eq("id", id),
+    supabase.from("gallery_images").update({ sort_order: index }).eq("id", otherId),
+  ]);
   revalidatePath("/admin/gallery");
   revalidatePath("/gallery");
 }
