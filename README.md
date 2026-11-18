@@ -64,8 +64,11 @@ Open [http://localhost:3000](http://localhost:3000).
    (you can sign up with GitHub), optionally verify a sending domain (or use their
    shared test domain while developing), and create an API key. Send the API key and
    the verified "from" address (or say you're using the test domain).
-4. **Vercel** ([vercel.com](https://vercel.com)) — account connected; the project
-   itself (linked to the GitHub repo) still needs creating for deployment.
+4. ~~**Vercel**~~ — done: project `florence-foundation-website` created and linked to
+   the GitHub repo (team `heydanehq-9182's projects`). `NEXT_PUBLIC_SUPABASE_URL`,
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `CONTACT_RECIPIENT_EMAIL` and `CONTACT_FROM_EMAIL`
+   are set for all environments. Every push to `main` now auto-deploys to production.
+   `RESEND_API_KEY` still needs adding once step 3 is done.
 5. Confirm the **real** bank details, phone number and office address to replace the
    placeholders described above.
 
