@@ -16,16 +16,20 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   bank details), Contact Us (working form with client + server validation).
 - Shared `Header` (sticky, scroll-aware, mobile drawer with focus trap) and `Footer`.
 - A real `/api/contact` route: Zod validation, a honeypot field, basic per-IP rate
-  limiting, a Supabase insert, and a Resend email send. Supabase is live — submissions
-  are genuinely saved to the `contact_submissions` table (verified end-to-end). Resend
-  isn't set up yet, so no notification email goes out yet, but the form still succeeds
-  because the database save alone counts as success (a real enquiry is never silently
-  dropped just because one channel isn't configured).
+  limiting, a Supabase insert, and a Resend email send — both verified end-to-end with
+  live test submissions (confirmed in the database, and the Resend call completed with
+  no errors). The database save and the email send are independent, so a real enquiry
+  is saved even if one of the two channels is ever down.
 - Supabase project `florence-foundation` (`eu-west-2`) created, with the
   `contact_submissions` table and Row Level Security policies: the public `anon` role
   can only insert; reading/updating/deleting is reserved for `authenticated` users
   (the future `/admin` dashboard, once Supabase Auth is wired up there). No service-role
   key is used anywhere in the app — everything goes through RLS.
+- Resend connected on its Free plan, sending from the shared `resend.dev` test domain
+  for now (swap `CONTACT_FROM_EMAIL` once a real domain is verified).
+- Vercel project `florence-foundation-website` created and linked to the GitHub repo —
+  **live at [florence-foundation-website.vercel.app](https://florence-foundation-website.vercel.app)**,
+  auto-deploying on every push to `main`.
 - SEO foundations: per-page metadata, Organization (NGO) and BreadcrumbList JSON-LD,
   `sitemap.xml`, and `robots.ts` that automatically **disallows all indexing on anything
   that isn't the production Vercel deployment** (previews and local dev are never
@@ -33,7 +37,7 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
 
 **Not built yet:** Blog, the `/admin` dashboard (incl. Supabase Auth for admin login),
 the hero slider and gallery becoming database-backed (they currently read from static
-files in `src/content/`), Resend email sending, analytics wiring, and Vercel deployment.
+files in `src/content/`), and analytics wiring.
 
 ## Known placeholder data
 
@@ -57,20 +61,14 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## What we need from you
 
-1. ~~**GitHub**~~ — done: [github.com/Philomath00/florencefoundationuk](https://github.com/Philomath00/florencefoundationuk).
-2. ~~**Supabase**~~ — done: project `florence-foundation` in `eu-west-2`, connected and
-   schema applied.
-3. **Resend** ([resend.com](https://resend.com)) — still needed. Create an account
-   (you can sign up with GitHub), optionally verify a sending domain (or use their
-   shared test domain while developing), and create an API key. Send the API key and
-   the verified "from" address (or say you're using the test domain).
-4. ~~**Vercel**~~ — done: project `florence-foundation-website` created and linked to
-   the GitHub repo (team `heydanehq-9182's projects`). `NEXT_PUBLIC_SUPABASE_URL`,
-   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `CONTACT_RECIPIENT_EMAIL` and `CONTACT_FROM_EMAIL`
-   are set for all environments. Every push to `main` now auto-deploys to production.
-   `RESEND_API_KEY` still needs adding once step 3 is done.
-5. Confirm the **real** bank details, phone number and office address to replace the
-   placeholders described above.
+All four accounts are now connected: ~~GitHub~~, ~~Supabase~~, ~~Resend~~, ~~Vercel~~.
+What's left:
+
+1. Confirm the **real** bank details, phone number and office address, to replace the
+   design export's sample placeholders described above.
+2. Whenever ready: a verified sending domain in Resend (so email comes from
+   `@florencefoundation.co.uk` instead of the shared test domain), and a custom domain
+   pointed at the Vercel project instead of the `.vercel.app` address.
 
 ## Project structure
 
