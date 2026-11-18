@@ -172,8 +172,15 @@ export default function SettingsForm({ settings }: { settings: Settings }) {
           <Field label="Bank name" name="bank_ng_bank_name" defaultValue={bankRow(settings.bank_ng, "Bank name", 1)} />
           <Field label="Account number" name="bank_ng_account_number" defaultValue={bankRow(settings.bank_ng, "Account number", 2)} />
           <Field label="Account type" name="bank_ng_account_type" defaultValue={bankRow(settings.bank_ng, "Account type", 3)} />
-          <Field label="SWIFT / BIC" name="bank_ng_swift" defaultValue={bankRow(settings.bank_ng, "SWIFT / BIC", 4)} />
+          <Field
+            label="SWIFT / BIC (optional — uncommon for domestic Nigerian transfers)"
+            name="bank_ng_swift"
+            defaultValue={bankRow(settings.bank_ng, "SWIFT / BIC", 4)}
+          />
         </div>
+        <p className="mt-3 text-xs text-ink-600">
+          Leave SWIFT / BIC blank to hide that row on the public Support page entirely.
+        </p>
       </section>
 
       <div>

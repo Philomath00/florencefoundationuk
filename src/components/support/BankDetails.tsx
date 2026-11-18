@@ -40,23 +40,32 @@ export default function BankDetails({ bankAccounts }: { bankAccounts: BankAccoun
               </span>
             </header>
             <dl className="m-0 px-7 pt-2 pb-5">
-              {b.rows.map(([k, v], i) => {
-                const id = b.key + i;
-                return (
-                  <div key={k} className="grid grid-cols-[minmax(110px,0.8fr)_minmax(0,1.4fr)_auto] items-center gap-3 border-b border-border-4 py-3.5">
-                    <dt className="text-sm text-ink-600">{k}</dt>
-                    <dd className="m-0 overflow-hidden font-heading text-base font-bold break-words text-ink-900">{v}</dd>
-                    <button
-                      type="button"
-                      onClick={() => copy(id, k, v)}
-                      aria-label={`Copy ${k}`}
-                      className="h-[38px] min-w-[76px] rounded-full border-[1.5px] border-border-2 bg-white px-3 font-heading text-[13px] font-bold text-brand-700 hover:border-brand-300 hover:bg-brand-50"
+              {b.rows
+                .filter(([, v]) => v.trim() !== "")
+                .map(([k, v], i) => {
+                  const id = b.key + i;
+                  return (
+                    <div
+                      key={k}
+                      className="flex flex-col gap-2 border-b border-border-4 py-3.5 sm:grid sm:grid-cols-[minmax(110px,0.8fr)_minmax(0,1.4fr)_auto] sm:items-center sm:gap-3"
                     >
-                      {copied === id ? "Copied" : "Copy"}
-                    </button>
-                  </div>
-                );
-              })}
+                      <div className="flex items-center justify-between gap-3 sm:contents">
+                        <dt className="text-sm text-ink-600">{k}</dt>
+                        <button
+                          type="button"
+                          onClick={() => copy(id, k, v)}
+                          aria-label={`Copy ${k}`}
+                          className="h-[38px] min-w-[76px] flex-shrink-0 rounded-full border-[1.5px] border-border-2 bg-white px-3 font-heading text-[13px] font-bold text-brand-700 hover:border-brand-300 hover:bg-brand-50 sm:order-3"
+                        >
+                          {copied === id ? "Copied" : "Copy"}
+                        </button>
+                      </div>
+                      <dd className="m-0 overflow-hidden font-heading text-base font-bold break-words text-ink-900 sm:order-2">
+                        {v}
+                      </dd>
+                    </div>
+                  );
+                })}
             </dl>
           </article>
         ))}
