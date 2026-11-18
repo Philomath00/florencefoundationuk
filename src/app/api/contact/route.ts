@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getSupabaseAdmin, isSupabaseConfigured } from "@/lib/supabase/server";
+import { getSupabaseServer, isSupabaseConfigured } from "@/lib/supabase/server";
 import { getResend, isResendConfigured } from "@/lib/resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/content/site";
@@ -55,20 +55,15 @@ export async function POST(request: Request) {
 
   const { name, email, phone, type, message } = parsed.data;
 
-  if (!isResendConfigured()) {
-    console.error("[contact] RESEND_API_KEY is not set — cannot send notification email.");
-    return NextResponse.json(
-      {
-        success: false,
-        message: "The contact form is not fully configured yet. Please email us directly in the meantime.",
-      },
-      { status: 503 },
-    );
-  }
+  // The message is saved to the database and/or emailed, independently —
+  // a real enquiry should never be lost just because one channel isn't
+  // configured yet. Overall success requires at least one to work.
+  let saved = false;
+  let emailed = false;
 
   if (isSupabaseConfigured()) {
     try {
-      const supabase = getSupabaseAdmin();
+      const supabase = getSupabaseServer();
       const { error } = await supabase.from("contact_submissions").insert({
         name,
         email,
@@ -78,6 +73,7 @@ export async function POST(request: Request) {
         status: "unread",
       });
       if (error) console.error("[contact] Supabase insert failed:", error.message);
+      else saved = true;
     } catch (err) {
       console.error("[contact] Supabase insert threw:", err);
     }
@@ -85,20 +81,31 @@ export async function POST(request: Request) {
     console.warn("[contact] Supabase is not configured — submission was not saved to the database.");
   }
 
-  try {
-    const resend = getResend();
-    const toAddress = process.env.CONTACT_RECIPIENT_EMAIL || siteConfig.email;
-    await resend.emails.send({
-      from: process.env.CONTACT_FROM_EMAIL || "Florence Foundation Website <onboarding@resend.dev>",
-      to: toAddress,
-      replyTo: email,
-      subject: `Website enquiry: ${type} — ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\nEnquiry type: ${type}\n\n${message}`,
-    });
-  } catch (err) {
-    console.error("[contact] Resend send failed:", err);
+  if (isResendConfigured()) {
+    try {
+      const resend = getResend();
+      const toAddress = process.env.CONTACT_RECIPIENT_EMAIL || siteConfig.email;
+      await resend.emails.send({
+        from: process.env.CONTACT_FROM_EMAIL || "Florence Foundation Website <onboarding@resend.dev>",
+        to: toAddress,
+        replyTo: email,
+        subject: `Website enquiry: ${type} — ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\nEnquiry type: ${type}\n\n${message}`,
+      });
+      emailed = true;
+    } catch (err) {
+      console.error("[contact] Resend send failed:", err);
+    }
+  } else {
+    console.warn("[contact] Resend is not configured — no notification email was sent.");
+  }
+
+  if (!saved && !emailed) {
     return NextResponse.json(
-      { success: false, message: "Sorry, your message could not be sent. Please try again or email us directly." },
+      {
+        success: false,
+        message: "Sorry, your message could not be sent. Please try again or email us directly.",
+      },
       { status: 502 },
     );
   }

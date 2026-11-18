@@ -16,18 +16,24 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   bank details), Contact Us (working form with client + server validation).
 - Shared `Header` (sticky, scroll-aware, mobile drawer with focus trap) and `Footer`.
 - A real `/api/contact` route: Zod validation, a honeypot field, basic per-IP rate
-  limiting, Supabase insert, and a Resend email send. It currently returns a clear
-  "not configured" error because no Supabase or Resend project exists yet — see
-  **What we need from you** below. This is intentionally *not* mocked.
+  limiting, a Supabase insert, and a Resend email send. Supabase is live — submissions
+  are genuinely saved to the `contact_submissions` table (verified end-to-end). Resend
+  isn't set up yet, so no notification email goes out yet, but the form still succeeds
+  because the database save alone counts as success (a real enquiry is never silently
+  dropped just because one channel isn't configured).
+- Supabase project `florence-foundation` (`eu-west-2`) created, with the
+  `contact_submissions` table and Row Level Security policies: the public `anon` role
+  can only insert; reading/updating/deleting is reserved for `authenticated` users
+  (the future `/admin` dashboard, once Supabase Auth is wired up there). No service-role
+  key is used anywhere in the app — everything goes through RLS.
 - SEO foundations: per-page metadata, Organization (NGO) and BreadcrumbList JSON-LD,
   `sitemap.xml`, and `robots.ts` that automatically **disallows all indexing on anything
   that isn't the production Vercel deployment** (previews and local dev are never
   indexed).
 
-**Not built yet:** Blog, the `/admin` dashboard, the hero slider and gallery becoming
-database-backed (they currently read from static files in `src/content/`), analytics
-wiring, and the Supabase schema/migrations. These need the accounts below before they
-can be built against something real.
+**Not built yet:** Blog, the `/admin` dashboard (incl. Supabase Auth for admin login),
+the hero slider and gallery becoming database-backed (they currently read from static
+files in `src/content/`), Resend email sending, analytics wiring, and Vercel deployment.
 
 ## Known placeholder data
 
@@ -51,28 +57,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## What we need from you
 
-The project has no backend yet — these all need **your own accounts** (for billing,
-ownership and security reasons this isn't something to hand over credentials for
-instead). Once created, send the values below and the next build phase (DB schema,
-admin dashboard, email, analytics, deployment) can proceed.
-
-1. **GitHub** — create an empty repository (e.g. `florence-foundation-website`) under
-   your account or organization. Send the repo URL.
-2. **Supabase** ([supabase.com](https://supabase.com)) — create a new project (choose a
-   region close to your users, e.g. `eu-west-2` for UK). From *Project Settings → API*,
-   send: Project URL, `anon` public key, and `service_role` secret key (treat the service
-   role key like a password).
-3. **Resend** ([resend.com](https://resend.com)) — create an account, verify a sending
-   domain (or use their shared test domain while developing), and create an API key.
-   Send the API key and the verified "from" address.
-4. **Vercel** ([vercel.com](https://vercel.com)) — create an account/team and connect it
-   to the GitHub repo from step 1 once it exists. Vercel will handle hosting, preview
-   deployments and analytics.
+1. ~~**GitHub**~~ — done: [github.com/Philomath00/florencefoundationuk](https://github.com/Philomath00/florencefoundationuk).
+2. ~~**Supabase**~~ — done: project `florence-foundation` in `eu-west-2`, connected and
+   schema applied.
+3. **Resend** ([resend.com](https://resend.com)) — still needed. Create an account
+   (you can sign up with GitHub), optionally verify a sending domain (or use their
+   shared test domain while developing), and create an API key. Send the API key and
+   the verified "from" address (or say you're using the test domain).
+4. **Vercel** ([vercel.com](https://vercel.com)) — account connected; the project
+   itself (linked to the GitHub repo) still needs creating for deployment.
 5. Confirm the **real** bank details, phone number and office address to replace the
    placeholders described above.
-
-Nothing above requires technical knowledge beyond clicking "create project" and copying
-some keys — all of them have a free tier suitable for a site this size.
 
 ## Project structure
 

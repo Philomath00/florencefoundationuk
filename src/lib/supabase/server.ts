@@ -1,29 +1,32 @@
 import "server-only";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-let adminClient: SupabaseClient | null = null;
+let anonClient: SupabaseClient | null = null;
 
 /**
- * Service-role Supabase client for trusted server contexts only (API routes,
- * Server Actions, admin pages). Never import this from a Client Component —
- * the "server-only" import above makes that a build error if attempted.
+ * Server-side Supabase client using the public anon/publishable key.
+ * Access is governed entirely by Row Level Security policies — there is no
+ * service-role bypass key in this app. Public writes (e.g. the contact
+ * form) rely on a policy that grants the `anon` role insert-only access;
+ * admin reads/writes rely on policies scoped to `authenticated` users via
+ * Supabase Auth.
  */
-export function getSupabaseAdmin(): SupabaseClient {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+export function getSupabaseServer(): SupabaseClient {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) {
     throw new Error(
-      "Supabase is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local (see .env.example).",
+      "Supabase is not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local (see .env.example).",
     );
   }
-  if (!adminClient) {
-    adminClient = createClient(url, key, {
+  if (!anonClient) {
+    anonClient = createClient(url, key, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
   }
-  return adminClient;
+  return anonClient;
 }
 
 export function isSupabaseConfigured(): boolean {
-  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 }
