@@ -14,10 +14,7 @@ import {
 type Slide = {
   id: string;
   image_url: string;
-  headline: string;
-  description: string | null;
-  cta_label: string | null;
-  cta_href: string | null;
+  alt: string;
   published: boolean;
 };
 
@@ -46,35 +43,14 @@ function SlideForm({
           <Image src={imageUrl} alt="" fill className="object-cover" unoptimized />
         </div>
       )}
-      <ImageUploader pathPrefix="hero-slides" onUploaded={setImageUrl} label="Uploading slide image" />
+      <ImageUploader pathPrefix="hero-slides" onUploaded={setImageUrl} label="Uploading image" />
       <input
-        name="headline"
-        placeholder="Headline"
-        defaultValue={slide?.headline}
+        name="alt"
+        placeholder="Alt text (describe the image for screen readers)"
+        defaultValue={slide?.alt}
         required
         className="h-11 rounded-xl border-[1.5px] border-border-2 px-3.5 text-sm outline-none focus:border-brand-500"
       />
-      <textarea
-        name="description"
-        placeholder="Description"
-        defaultValue={slide?.description ?? ""}
-        rows={2}
-        className="rounded-xl border-[1.5px] border-border-2 px-3.5 py-2.5 text-sm outline-none focus:border-brand-500"
-      />
-      <div className="grid grid-cols-2 gap-3">
-        <input
-          name="cta_label"
-          placeholder="Button label"
-          defaultValue={slide?.cta_label ?? ""}
-          className="h-11 rounded-xl border-[1.5px] border-border-2 px-3.5 text-sm outline-none focus:border-brand-500"
-        />
-        <input
-          name="cta_href"
-          placeholder="Button link (e.g. /support)"
-          defaultValue={slide?.cta_href ?? ""}
-          className="h-11 rounded-xl border-[1.5px] border-border-2 px-3.5 text-sm outline-none focus:border-brand-500"
-        />
-      </div>
       <button
         type="submit"
         disabled={pending || !imageUrl}
@@ -94,6 +70,10 @@ export default function HeroSlideManager({ slides }: { slides: Slide[] }) {
 
   return (
     <div className="flex flex-col gap-4">
+      <p className="rounded-xl bg-brand-50 px-4 py-3 text-sm text-brand-700">
+        These images rotate on the right side of the homepage hero. The heading, copy and buttons
+        on the left are fixed design content and aren&apos;t edited here.
+      </p>
       <ul className="flex flex-col gap-3">
         {slides.map((slide, i) => (
           <li key={slide.id} className="rounded-2xl border border-border bg-white p-4">
@@ -112,8 +92,7 @@ export default function HeroSlideManager({ slides }: { slides: Slide[] }) {
                   <Image src={slide.image_url} alt="" fill className="object-cover" unoptimized />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate font-heading text-sm font-bold text-ink-900">{slide.headline}</p>
-                  <p className="truncate text-xs text-ink-600">{slide.description}</p>
+                  <p className="truncate text-sm text-ink-700">{slide.alt}</p>
                 </div>
                 <span
                   className={`rounded-full px-2.5 py-1 text-xs font-bold ${

@@ -66,12 +66,14 @@ export const bankAccounts = [
   },
 ] as const;
 
+// "Blog" is intentionally not in the public nav (matches the approved
+// design, which has no Blog item) — the /blog pages and admin CMS still
+// work, just not linked from the header/footer until you want it live.
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Blog", href: "/blog" },
   { label: "Support Us", href: "/support" },
   { label: "Contact Us", href: "/contact" },
 ] as const;

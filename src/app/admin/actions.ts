@@ -108,10 +108,7 @@ export async function createHeroSlide(formData: FormData) {
   const { count } = await supabase.from("hero_slides").select("id", { count: "exact", head: true });
   const { error } = await supabase.from("hero_slides").insert({
     image_url: String(formData.get("image_url") || ""),
-    headline: String(formData.get("headline") || ""),
-    description: String(formData.get("description") || ""),
-    cta_label: String(formData.get("cta_label") || ""),
-    cta_href: String(formData.get("cta_href") || ""),
+    alt: String(formData.get("alt") || ""),
     sort_order: count ?? 0,
     published: true,
   });
@@ -126,10 +123,7 @@ export async function updateHeroSlide(id: string, formData: FormData) {
     .from("hero_slides")
     .update({
       image_url: String(formData.get("image_url") || ""),
-      headline: String(formData.get("headline") || ""),
-      description: String(formData.get("description") || ""),
-      cta_label: String(formData.get("cta_label") || ""),
-      cta_href: String(formData.get("cta_href") || ""),
+      alt: String(formData.get("alt") || ""),
       updated_at: new Date().toISOString(),
     })
     .eq("id", id);

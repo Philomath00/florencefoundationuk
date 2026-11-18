@@ -39,7 +39,6 @@ export default function Footer({ settings }: { settings: ResolvedSiteSettings })
             <Link href="/about" className="text-base text-white hover:text-brand-200">About Us</Link>
             <Link href="/projects" className="text-base text-white hover:text-brand-200">Projects</Link>
             <Link href="/gallery" className="text-base text-white hover:text-brand-200">Gallery</Link>
-            <Link href="/blog" className="text-base text-white hover:text-brand-200">Blog</Link>
           </nav>
 
           <nav aria-label="Get involved" className="flex flex-col gap-3.5">
