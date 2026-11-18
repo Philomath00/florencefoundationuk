@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { navLinks } from "@/content/site";
 
 function isActive(pathname: string, href: string) {
@@ -119,6 +120,7 @@ export default function Header() {
 
           <Link
             href="/support"
+            onClick={() => track("donate_cta_click", { location: "header-desktop" })}
             className="hidden items-center gap-2.5 rounded-full bg-brand-500 px-[26px] py-3.5 font-heading text-[15px] font-bold text-white transition hover:-translate-y-px hover:bg-brand-600 lg:inline-flex"
           >
             Donate Now
@@ -130,6 +132,7 @@ export default function Header() {
           <div className="flex items-center gap-2.5 lg:hidden">
             <Link
               href="/support"
+              onClick={() => track("donate_cta_click", { location: "header-mobile" })}
               className="inline-flex min-h-11 items-center rounded-full bg-brand-500 px-[18px] font-heading text-sm font-bold text-white"
             >
               Donate
@@ -199,6 +202,7 @@ export default function Header() {
             <div className="mt-auto flex flex-col gap-4 pt-8">
               <Link
                 href="/support"
+                onClick={() => track("donate_cta_click", { location: "header-drawer" })}
                 className="flex items-center justify-between rounded-full bg-brand-500 px-6 py-[18px] font-heading text-base font-bold text-white"
               >
                 Donate Now <span aria-hidden="true">→</span>

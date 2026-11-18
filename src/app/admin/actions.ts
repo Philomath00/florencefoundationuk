@@ -325,3 +325,94 @@ export async function deleteBlogPost(id: string) {
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
 }
+
+// ---------- Projects ----------
+
+function parseLines(value: string): string[] {
+  return value
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+}
+
+function parseActivities(value: string): { t: string; d: string; s: string }[] {
+  return parseLines(value)
+    .map((line) => {
+      const [t, d, s] = line.split("|").map((part) => part.trim());
+      return t ? { t, d: d || "", s: s || "Planned" } : null;
+    })
+    .filter((a): a is { t: string; d: string; s: string } => a !== null);
+}
+
+function parsePhotos(value: string): { src: string; alt: string; pos: string }[] {
+  return parseLines(value)
+    .map((line) => {
+      const [src, alt] = line.split("|").map((part) => part.trim());
+      return src ? { src, alt: alt || "", pos: "50% 50%" } : null;
+    })
+    .filter((p): p is { src: string; alt: string; pos: string } => p !== null);
+}
+
+function buildProjectPayload(formData: FormData) {
+  return {
+    slug: String(formData.get("slug") || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, ""),
+    cat: String(formData.get("cat") || ""),
+    word: String(formData.get("word") || ""),
+    title: String(formData.get("title") || ""),
+    summary: String(formData.get("summary") || ""),
+    img: String(formData.get("img") || ""),
+    img_pos: String(formData.get("img_pos") || "50% 50%"),
+    alt: String(formData.get("alt") || ""),
+    hero: String(formData.get("hero") || ""),
+    hero_pos: String(formData.get("hero_pos") || "50% 50%"),
+    hero_alt: String(formData.get("hero_alt") || ""),
+    tint: String(formData.get("tint") || "lav"),
+    amount: String(formData.get("amount") || ""),
+    amount_label: String(formData.get("amount_label") || ""),
+    lead: String(formData.get("lead") || ""),
+    overview: String(formData.get("overview") || ""),
+    problem: String(formData.get("problem") || ""),
+    objectives: parseLines(String(formData.get("objectives") || "")),
+    activities: parseActivities(String(formData.get("activities") || "")),
+    beneficiaries: String(formData.get("beneficiaries") || ""),
+    quote: String(formData.get("quote") || ""),
+    photos: parsePhotos(String(formData.get("photos") || "")),
+    give: String(formData.get("give") || "donate"),
+    published: formData.get("published") === "on",
+  };
+}
+
+export async function createProject(_prevState: unknown, formData: FormData) {
+  const supabase = await createRscSupabaseClient();
+  const { count } = await supabase.from("projects").select("id", { count: "exact", head: true });
+  const { error } = await supabase.from("projects").insert({ ...buildProjectPayload(formData), sort_order: count ?? 0 });
+  if (error) return { error: error.message };
+  revalidatePath("/admin/projects");
+  revalidatePath("/projects");
+  redirect("/admin/projects");
+}
+
+export async function updateProject(id: string, _prevState: unknown, formData: FormData) {
+  const supabase = await createRscSupabaseClient();
+  const { error } = await supabase
+    .from("projects")
+    .update({ ...buildProjectPayload(formData), updated_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) return { error: error.message };
+  revalidatePath("/admin/projects");
+  revalidatePath("/projects");
+  revalidatePath(`/projects/${String(formData.get("slug") || "")}`);
+  return { success: true };
+}
+
+export async function deleteProject(id: string) {
+  const supabase = await createRscSupabaseClient();
+  const { error } = await supabase.from("projects").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/projects");
+  revalidatePath("/projects");
+}

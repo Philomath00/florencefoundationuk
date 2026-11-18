@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import Kicker from "@/components/ui/Kicker";
 import CtaBand from "@/components/ui/CtaBand";
 import ProjectGrid from "@/components/projects/ProjectGrid";
-import { projects } from "@/content/projects";
+import { getAllProjects } from "@/lib/projects-data";
 
 export const metadata: Metadata = {
   title: "Our Projects",
@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getAllProjects();
+
   return (
     <>
       <PageHero

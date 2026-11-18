@@ -8,6 +8,7 @@ const navItems = [
   { href: "/admin/submissions", label: "Contact Submissions" },
   { href: "/admin/slider", label: "Hero Slider" },
   { href: "/admin/gallery", label: "Gallery" },
+  { href: "/admin/projects", label: "Projects" },
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/settings", label: "Website Settings" },
 ];

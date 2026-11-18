@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { track } from "@vercel/analytics";
 
 const enquiryTypes = [
   "General Enquiry",
@@ -98,6 +99,7 @@ export default function ContactForm() {
         throw new Error(data.message || "Sorry, your message could not be sent.");
       }
       setStatus("success");
+      track("contact_form_submitted", { enquiry_type: form.type });
     } catch (err) {
       setStatus("error");
       setErrorMsg(

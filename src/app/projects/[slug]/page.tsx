@@ -5,7 +5,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import PillLink from "@/components/ui/PillLink";
 import CtaBand from "@/components/ui/CtaBand";
-import { getProject, giveCta, projects, relatedProjects, type ProjectActivity } from "@/content/projects";
+import { giveCta, projects, type ProjectActivity } from "@/content/projects";
+import { getProjectBySlug, getRelatedProjects } from "@/lib/projects-data";
 
 const heroGradient: Record<string, string> = {
   lav: "linear-gradient(90deg,rgba(36,34,44,0.8) 0%,rgba(36,34,44,0.4) 45%,rgba(106,98,214,0.6) 100%)",
@@ -29,7 +30,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -41,11 +42,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
   const give = giveCta[project.give];
-  const related = relatedProjects(project.slug, 3);
+  const related = await getRelatedProjects(project.slug, 3);
 
   return (
     <>
