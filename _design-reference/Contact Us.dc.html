@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Contact Us — Florence Foundation</title>
+<link rel="icon" href="assets/symbol.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:#FFFFFF;color:#302F35;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}*{box-sizing:border-box}a{color:#6A62D6;text-decoration:none}a:hover{color:#5850C4}:focus-visible{outline:3px solid #918AF0;outline-offset:3px}input,select,textarea{font:inherit}@keyframes ffSpin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}</style>
+</helmet>
+<dc-import name="Header" active="contact" hint-size="100%,96px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Contact 01 Map" aria-labelledby="c-hero-h" style="position:relative;height:clamp(460px,44vw,600px);background:#EEECFD;overflow:hidden">
+  <iframe title="Map showing Florence Foundation's sample address in London" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.1395%2C51.5075%2C-0.1085%2C51.5195&amp;layer=mapnik&amp;marker=51.5131%2C-0.1257" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(0.6) hue-rotate(10deg)" loading="lazy"></iframe>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,248,247,0.96) 0%,rgba(250,248,247,0.75) 34%,rgba(250,248,247,0) 62%);pointer-events:none"></div>
+  <div style="position:relative;height:100%;max-width:1320px;margin:0 auto;padding:0 24px;display:flex;align-items:center;pointer-events:none">
+    <div style="pointer-events:auto;max-width:560px">
+      <nav aria-label="Breadcrumb" style="margin-bottom:24px">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;gap:10px;font-size:14px;color:#5E5C66">
+          <li><a href="Home.dc.html" style="color:#302F35" style-hover="color:#6A62D6">Home</a></li>
+          <li aria-hidden="true" style="color:#F2848F">/</li>
+          <li aria-current="page" style="color:#6A62D6">Contact Us</li>
+        </ol>
+      </nav>
+      <div style="display:flex;align-items:center;gap:18px">
+        <span aria-hidden="true" style="display:flex;gap:7px;flex-shrink:0"><span style="width:14px;height:14px;border-radius:50%;background:#F79AA7"></span><span style="width:14px;height:14px;border-radius:50%;background:#918AF0"></span></span>
+        <h1 id="c-hero-h" style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(44px,6vw,88px);line-height:1;letter-spacing:-0.03em;color:#302F35">Contact Us</h1>
+      </div>
+      <p style="margin:20px 0 28px;padding-left:53px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:clamp(18px,1.6vw,22px);color:#302F35">Let's Work Together to Make a Difference.</p>
+      <div style="display:inline-flex;gap:14px;align-items:flex-start;margin-left:53px;padding:16px 20px;border-radius:18px;background:#FFFFFF;box-shadow:0 16px 40px -20px rgba(48,47,53,0.35)">
+        <img src="assets/symbol.png" alt="" aria-hidden="true" style="width:36px;height:36px">
+        <div><p style="margin:0 0 2px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;color:#302F35">Florence Foundation</p><p style="margin:0;font-size:14px;line-height:1.5;color:#4A4852">{{ address }}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-form" data-screen-label="Contact 02 Form" aria-labelledby="c-form-h" style="background:#FFFFFF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,8vw,112px) 24px;display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start">
+    <div style="flex:999 1 560px;min-width:0">
+      <p style="margin:0 0 16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#6A62D6">GET IN TOUCH</p>
+      <h2 id="c-form-h" style="margin:0 0 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(34px,3.8vw,54px);line-height:1.08;letter-spacing:-0.02em;color:#302F35">We'd Love to Hear From You.</h2>
+      <p style="margin:0 0 40px;max-width:620px;font-size:18px;line-height:1.7;color:#4A4852;text-wrap:pretty">Whether you would like to support our initiatives, explore a partnership, donate essential goods, or learn more about Florence Foundation, we welcome your enquiry.</p>
+
+      <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="padding:40px;border-radius:28px;background:#EEECFD">
+          <span style="width:56px;height:56px;border-radius:50%;background:#6A62D6;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+          <h3 style="margin:0 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:26px;color:#302F35">Thank you, your message has been sent.</h3>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#4A4852">A member of the Florence Foundation team will reply to you by email.</p>
+          <button type="button" onClick="{{ reset }}" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;border:2px solid #F79AA7;background:#FFFFFF;color:#302F35;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;cursor:pointer" style-hover="background:#FDEEEF">Send another message</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" noValidate="{{ true }}" aria-describedby="req-note" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:22px 20px;padding:clamp(24px,3vw,40px);border-radius:28px;background:#FAF8F7">
+          <p id="req-note" style="grid-column:1/-1;margin:0;font-size:14px;color:#5E5C66">Fields marked <span style="color:#A93A4C;font-weight:700">*</span> are required.</p>
+          <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;padding:14px 18px;border-radius:14px;background:#FDEEEF;border:1.5px solid #F2848F;color:#7A2434;font-size:15px;line-height:1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4M12 16h.01"></path></svg><span>{{ errorMsg }}</span></div>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="f-name" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:#302F35">Full name <span style="color:#A93A4C">*</span></label>
+            <input id="f-name" name="name" type="text" autoComplete="name" value="{{ f.name }}" onChange="{{ onName }}" aria-invalid="{{ e.nameInv }}" aria-describedby="f-name-err" style="height:54px;padding:0 18px;border-radius:14px;border:1.5px solid {{ e.nameBd }};background:#FFFFFF;color:#302F35;font-size:16px;outline:none" style-focus="border-color:#6A62D6;box-shadow:0 0 0 4px #EEECFD">
+            <span id="f-name-err" style="font-size:13px;color:#A93A4C;min-height:0">{{ e.name }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="f-email" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:#302F35">Email address <span style="color:#A93A4C">*</span></label>
+            <input id="f-email" name="email" type="email" autoComplete="email" value="{{ f.email }}" onChange="{{ onEmail }}" aria-invalid="{{ e.emailInv }}" aria-describedby="f-email-err" style="height:54px;padding:0 18px;border-radius:14px;border:1.5px solid {{ e.emailBd }};background:#FFFFFF;color:#302F35;font-size:16px;outline:none" style-focus="border-color:#6A62D6;box-shadow:0 0 0 4px #EEECFD">
+            <span id="f-email-err" style="font-size:13px;color:#A93A4C">{{ e.email }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="f-phone" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:#302F35">Telephone <span style="font-weight:500;color:#5E5C66">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autoComplete="tel" value="{{ f.phone }}" onChange="{{ onPhone }}" style="height:54px;padding:0 18px;border-radius:14px;border:1.5px solid #E2DEDA;background:#FFFFFF;color:#302F35;font-size:16px;outline:none" style-focus="border-color:#6A62D6;box-shadow:0 0 0 4px #EEECFD">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="f-type" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:#302F35">Enquiry type <span style="color:#A93A4C">*</span></label>
+            <select id="f-type" name="type" value="{{ f.type }}" onChange="{{ onType }}" style="height:54px;padding:0 18px;border-radius:14px;border:1.5px solid #E2DEDA;background:#FFFFFF;color:#302F35;font-size:16px;outline:none;cursor:pointer" style-focus="border-color:#6A62D6;box-shadow:0 0 0 4px #EEECFD">
+              <sc-for list="{{ types }}" as="t" hint-placeholder-count="6"><option value="{{ t }}">{{ t }}</option></sc-for>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px">
+            <label for="f-msg" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:#302F35">Message <span style="color:#A93A4C">*</span></label>
+            <textarea id="f-msg" name="message" rows="6" value="{{ f.message }}" onChange="{{ onMsg }}" aria-invalid="{{ e.msgInv }}" aria-describedby="f-msg-err" style="padding:16px 18px;border-radius:14px;border:1.5px solid {{ e.msgBd }};background:#FFFFFF;color:#302F35;font-size:16px;line-height:1.6;resize:vertical;outline:none" style-focus="border-color:#6A62D6;box-shadow:0 0 0 4px #EEECFD"></textarea>
+            <span id="f-msg-err" style="font-size:13px;color:#A93A4C">{{ e.message }}</span>
+          </div>
+          <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px">
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:#4A4852;cursor:pointer">
+              <input type="checkbox" checked="{{ f.consent }}" onChange="{{ onConsent }}" aria-invalid="{{ e.consentInv }}" style="width:22px;height:22px;margin:1px 0 0;accent-color:#6A62D6;flex-shrink:0">
+              <span>I agree that Florence Foundation may use these details to respond to my enquiry. <span style="color:#A93A4C">*</span></span>
+            </label>
+            <span style="font-size:13px;color:#A93A4C">{{ e.consent }}</span>
+          </div>
+          <div style="grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+            <button type="submit" disabled="{{ sending }}" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 32px;border-radius:999px;border:0;background:#6A62D6;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;cursor:pointer;transition:background .2s" style-hover="background:#5850C4">
+              <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(255,255,255,0.4);border-top-color:#FFFFFF;animation:ffSpin .8s linear infinite"></span></sc-if>
+              {{ submitLabel }}
+            </button>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+
+    <aside aria-label="Contact information" style="flex:1 1 320px;max-width:440px;display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:28px;background:#302F35;color:#FFFFFF;padding:32px;position:relative;overflow:hidden">
+        <img src="assets/symbol.png" alt="" aria-hidden="true" style="position:absolute;right:-40px;bottom:-40px;width:180px;opacity:0.08">
+        <h2 style="position:relative;margin:0 0 24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:24px;color:#FFFFFF">Contact information</h2>
+        <ul style="position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px">
+          <li style="display:flex;gap:16px;align-items:flex-start">
+            <span aria-hidden="true" style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:#3D3B45;color:#F79AA7;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg></span>
+            <div><p style="margin:0 0 2px;font-size:13px;color:#A9A5B1">Email</p><a href="mailto:info@florencefoundation.co.uk" style="color:#FFFFFF;font-weight:600;font-size:16px;overflow-wrap:anywhere" style-hover="color:#F8C4C9">info@florencefoundation.co.uk</a></div>
+          </li>
+          <li style="display:flex;gap:16px;align-items:flex-start">
+            <span aria-hidden="true" style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:#3D3B45;color:#F79AA7;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+            <div><p style="margin:0 0 2px;font-size:13px;color:#A9A5B1">Telephone (sample)</p><a href="tel:+442000000000" style="color:#FFFFFF;font-weight:600;font-size:16px" style-hover="color:#F8C4C9">+44 (0)20 0000 0000</a></div>
+          </li>
+          <li style="display:flex;gap:16px;align-items:flex-start">
+            <span aria-hidden="true" style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:#3D3B45;color:#F79AA7;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <div><p style="margin:0 0 2px;font-size:13px;color:#A9A5B1">Address (sample)</p><p style="margin:0;color:#FFFFFF;font-weight:600;font-size:16px;line-height:1.5">{{ address }}</p></div>
+          </li>
+        </ul>
+      </div>
+      <div style="border-radius:28px;background:#FDEEEF;padding:28px 32px">
+        <h2 style="margin:0 0 8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:#302F35">Stay Connected with Our Mission.</h2>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#4A4852">Follow our work and community updates.</p>
+        <a href="https://instagram.com/florencefoundationuk" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:18px;background:#FFFFFF;color:#302F35;font-weight:700;font-size:16px;transition:transform .2s" style-hover="color:#6A62D6;transform:translateY(-2px)">
+          <span aria-hidden="true" style="width:44px;height:44px;border-radius:12px;background:#6A62D6;color:#FFFFFF;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><path d="M17.5 6.5h.01"></path></svg></span>
+          <span style="display:flex;flex-direction:column"><span style="font-size:13px;font-weight:500;color:#5E5C66">Instagram</span>@florencefoundationuk</span>
+          <span aria-hidden="true" style="margin-left:auto">↗</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;previewState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;live&quot;,&quot;sending&quot;,&quot;error&quot;,&quot;success&quot;],&quot;default&quot;:&quot;live&quot;,&quot;tsType&quot;:&quot;'live'|'sending'|'error'|'success'&quot;}}">
+class Component extends DCLogic {
+  types = ['General Enquiry', 'Donation Enquiry', 'Sponsorship', 'Partnership', 'Donate Goods', 'Other'];
+  state = { f: { name: '', email: '', phone: '', type: 'General Enquiry', message: '', consent: false }, errors: {}, status: 'idle', errorMsg: '' };
+  componentDidMount() {
+    try {
+      const q = new URLSearchParams(location.search).get('enquiry');
+      const map = { 'donate-goods': 'Donate Goods', 'sponsorship': 'Sponsorship', 'partnership': 'Partnership', 'donation': 'Donation Enquiry' };
+      if (q && map[q]) this.setState(s => ({ f: { ...s.f, type: map[q] } }));
+    } catch (e) {}
+  }
+  set = (k) => (e) => { const v = k === 'consent' ? e.target.checked : e.target.value; this.setState(s => ({ f: { ...s.f, [k]: v }, errors: { ...s.errors, [k]: '' } })); };
+  validate(f) {
+    const e = {};
+    if (!f.name.trim()) e.name = 'Please enter your full name.';
+    if (!f.email.trim()) e.email = 'Please enter your email address.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) e.email = 'Please enter a valid email address.';
+    if (!f.message.trim()) e.message = 'Please enter a message.';
+    if (!f.consent) e.consent = 'Please confirm you agree before sending.';
+    return e;
+  }
+  submit = async (ev) => {
+    ev.preventDefault();
+    const errors = this.validate(this.state.f);
+    if (Object.keys(errors).length) { this.setState({ errors, status: 'error', errorMsg: 'Please check the highlighted fields.' }); const first = document.getElementById({ name: 'f-name', email: 'f-email', message: 'f-msg' }[Object.keys(errors)[0]]); first && first.focus(); return; }
+    // Recipient is configurable: set window.FF_CONTACT_EMAIL (or FF_CONTACT_ENDPOINT for a custom server route) in Claude Code.
+    const to = window.FF_CONTACT_EMAIL || 'heydanehq@gmail.com';
+    const endpoint = window.FF_CONTACT_ENDPOINT || ('https://formsubmit.co/ajax/' + encodeURIComponent(to));
+    const f = this.state.f;
+    this.setState({ status: 'sending', errors: {} });
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: f.name, email: f.email, phone: f.phone || '—', enquiry_type: f.type, message: f.message, _subject: 'Website enquiry: ' + f.type + ' — ' + f.name, _replyto: f.email, _template: 'table', _captcha: 'false' })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false || data.success === 'false') throw new Error(data.message || 'failed');
+      this.setState({ status: 'success' });
+    } catch (e) { this.setState({ status: 'error', errorMsg: 'Sorry, your message could not be sent. Please try again or email info@florencefoundation.co.uk.' }); }
+  };
+  reset = () => this.setState({ f: { name: '', email: '', phone: '', type: 'General Enquiry', message: '', consent: false }, errors: {}, status: 'idle' });
+  renderVals() {
+    const preview = this.props.previewState ?? 'live';
+    const status = preview === 'live' ? this.state.status : preview;
+    const er = this.state.errors, bd = (k) => er[k] ? '#C24A5C' : '#E2DEDA';
+    return {
+      address: '20 Long Acre, Covent Garden, London WC2E 9LY, United Kingdom',
+      f: this.state.f, types: this.types,
+      e: { name: er.name || '', email: er.email || '', message: er.message || '', consent: er.consent || '', nameBd: bd('name'), emailBd: bd('email'), msgBd: bd('message'), nameInv: er.name ? 'true' : 'false', emailInv: er.email ? 'true' : 'false', msgInv: er.message ? 'true' : 'false', consentInv: er.consent ? 'true' : 'false' },
+      onName: this.set('name'), onEmail: this.set('email'), onPhone: this.set('phone'), onType: this.set('type'), onMsg: this.set('message'), onConsent: this.set('consent'),
+      submit: this.submit, reset: this.reset,
+      isSuccess: status === 'success', showForm: status !== 'success', isError: status === 'error',
+      errorMsg: preview === 'error' ? 'Sorry, your message could not be sent. Please try again or email info@florencefoundation.co.uk.' : this.state.errorMsg,
+      sending: status === 'sending', submitLabel: status === 'sending' ? 'Sending…' : 'Send Message'
+    };
+  }
+}
+</script>
+</body>
+</html>

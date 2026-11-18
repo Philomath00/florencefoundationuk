@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Gallery — Florence Foundation</title>
+<link rel="icon" href="assets/symbol.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<script src="gallery-data.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#FFFFFF;color:#302F35;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}*{box-sizing:border-box}a{color:#6A62D6;text-decoration:none}a:hover{color:#5850C4}:focus-visible{outline:3px solid #918AF0;outline-offset:3px}@keyframes ffFade{from{opacity:0}to{opacity:1}}@keyframes ffZoom{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}</style>
+</helmet>
+<dc-import name="Header" active="gallery" hint-size="100%,96px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Gallery 01 Hero" aria-labelledby="g-hero-h" style="position:relative;min-height:clamp(380px,38vw,560px);display:flex;align-items:center;overflow:hidden;background:#302F35">
+  <img src="assets/gallery/2009-5.jpg" alt="Children laughing and posing together outdoors" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,34,44,0.82) 0%,rgba(36,34,44,0.45) 48%,rgba(106,98,214,0.5) 100%)"></div>
+  <span aria-hidden="true" style="position:absolute;right:-0.08em;bottom:-0.06em;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(80px,11vw,170px);line-height:0.8;letter-spacing:-0.03em;color:#FFFFFF">Moments</span>
+  <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:72px 24px">
+    <nav aria-label="Breadcrumb" style="margin-bottom:28px">
+      <ol style="list-style:none;margin:0;padding:0;display:flex;gap:10px;font-size:14px;color:#E4E1EA">
+        <li><a href="Home.dc.html" style="color:#FFFFFF" style-hover="color:#F8C4C9">Home</a></li>
+        <li aria-hidden="true" style="color:#F79AA7">/</li>
+        <li aria-current="page" style="color:#F8C4C9">Gallery</li>
+      </ol>
+    </nav>
+    <div style="display:flex;align-items:center;gap:20px">
+      <span aria-hidden="true" style="display:flex;gap:7px;flex-shrink:0"><span style="width:14px;height:14px;border-radius:50%;background:#F79AA7"></span><span style="width:14px;height:14px;border-radius:50%;background:#918AF0"></span></span>
+      <h1 id="g-hero-h" style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(46px,6.4vw,96px);line-height:1;letter-spacing:-0.03em;color:#FFFFFF">Our Gallery</h1>
+    </div>
+    <p style="margin:24px 0 0;padding-left:55px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:clamp(18px,1.6vw,22px);color:#FFFFFF">Faces of Hope. Moments of Compassion.</p>
+  </div>
+</section>
+
+<section data-screen-label="Gallery 02 Albums" aria-labelledby="g-intro-h" style="background:#FFFFFF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,120px) 24px clamp(80px,9vw,128px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:24px 96px;align-items:end;margin-bottom:48px">
+      <div>
+        <p style="margin:0 0 16px;display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#6A62D6"><span aria-hidden="true" style="display:flex;gap:4px"><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #6A62D6"></span><span style="width:7px;height:7px;border-radius:50%;border:1.5px solid #6A62D6"></span></span>OUR ALBUMS</p>
+        <h2 id="g-intro-h" style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(34px,3.8vw,54px);line-height:1.08;letter-spacing:-0.02em;color:#302F35;text-wrap:balance">Every Image Tells a Human Story.</h2>
+      </div>
+      <p style="margin:0;font-size:18px;line-height:1.7;color:#4A4852;max-width:560px;text-wrap:pretty">Explore moments that reflect the people, communities, and causes at the heart of Florence Foundation's mission.</p>
+    </div>
+
+    <div role="tablist" aria-label="Gallery years" style="display:flex;flex-wrap:wrap;gap:10px;padding-bottom:24px;margin-bottom:32px;border-bottom:2px solid #302F35">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+          <button type="button" role="tab" aria-selected="true" id="{{ t.id }}" onClick="{{ t.select }}" onKeyDown="{{ onTabKey }}" style="display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 24px;border-radius:999px;border:2px solid #6A62D6;background:#6A62D6;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;cursor:pointer">{{ t.year }}<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:#FFFFFF;color:#4B44A8">{{ t.count }}</span></button>
+        </sc-if>
+        <sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}">
+          <button type="button" role="tab" aria-selected="false" tabindex="-1" id="{{ t.id }}" onClick="{{ t.select }}" onKeyDown="{{ onTabKey }}" style="display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 24px;border-radius:999px;border:2px solid #E2DEDA;background:#FFFFFF;color:#302F35;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;cursor:pointer;transition:border-color .2s,background .2s" style-hover="border-color:#918AF0;background:#EEECFD">{{ t.year }}<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:#EEECFD;color:#4B44A8">{{ t.count }}</span></button>
+        </sc-if>
+      </sc-for>
+    </div>
+
+    <div role="tabpanel" aria-labelledby="{{ panelLabel }}">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:28px">
+        <h3 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(24px,2.2vw,32px);letter-spacing:-0.015em;color:#302F35">{{ album.year }} · {{ album.title }}</h3>
+        <span style="font-size:15px;color:#5E5C66">{{ albumCount }}</span>
+      </div>
+      <div style="columns:3 300px;column-gap:18px">
+        <sc-for list="{{ items }}" as="g" hint-placeholder-count="6">
+          <button type="button" onClick="{{ g.open }}" aria-label="{{ g.label }}" style="display:block;width:100%;margin:0 0 18px;padding:0;border:0;background:#F3F1EF;border-radius:20px;overflow:hidden;cursor:zoom-in;break-inside:avoid;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(48,47,53,0.45)">
+            <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:{{ g.ratio }};object-fit:cover">
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Gallery 03 CTA" aria-labelledby="cta-h" style="position:relative;background:#6A62D6;color:#FFFFFF;overflow:hidden">
+  <img src="assets/symbol.png" alt="" aria-hidden="true" style="position:absolute;right:max(-80px,calc((100vw - 1320px) / 2 - 40px));top:50%;transform:translateY(-50%);width:clamp(240px,30vw,420px);opacity:0.16;pointer-events:none">
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,120px) 24px">
+    <h2 id="cta-h" style="margin:0 0 40px;max-width:860px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(36px,4.4vw,64px);line-height:1.05;letter-spacing:-0.025em;color:#FFFFFF;text-wrap:balance">Help Us Create More Moments of Hope.</h2>
+    <a href="Support%20Us.dc.html" style="display:inline-flex;align-items:center;gap:12px;background:#FFFFFF;color:#4B44A8;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:18px 30px;border-radius:999px;transition:background .2s,transform .2s" style-hover="background:#F8C4C9;color:#302F35;transform:translateY(-2px)">Support Our Mission <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Image viewer" onTouchStart="{{ onTouchStart }}" onTouchEnd="{{ onTouchEnd }}" style="position:fixed;inset:0;z-index:200;background:rgba(28,27,32,0.96);display:flex;flex-direction:column;animation:ffFade .25s ease">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;color:#FFFFFF">
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">{{ album.year }} · {{ lbPos }}</span>
+      <button type="button" ref="{{ closeRef }}" onClick="{{ lbClose }}" aria-label="Close image viewer" style="width:48px;height:48px;border-radius:50%;border:0;background:#FFFFFF;color:#302F35;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+    </div>
+    <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 72px">
+      <img src="{{ lb.src }}" alt="{{ lb.alt }}" onClick="{{ lbZoom }}" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;cursor:{{ lbCursor }};transform:scale({{ lbScale }});transition:transform .3s;animation:ffZoom .3s ease">
+      <button type="button" onClick="{{ lbPrev }}" aria-label="Previous image" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,0.16);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,0.3)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button>
+      <button type="button" onClick="{{ lbNext }}" aria-label="Next image" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,0.16);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,0.3)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+    </div>
+    <p aria-live="polite" style="margin:12px 0 0;padding:0 24px;text-align:center;font-size:14px;color:#D9D6DE">{{ lb.alt }}</p>
+    <div style="display:flex;gap:10px;overflow-x:auto;padding:16px 20px 20px;justify-content:safe center">
+      <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5">
+        <button type="button" onClick="{{ t.go }}" aria-label="{{ t.label }}" aria-current="{{ t.current }}" style="flex-shrink:0;width:84px;height:60px;padding:0;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid {{ t.border }};opacity:{{ t.op }};background:#302F35">
+          <img src="{{ t.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 0, lb: -1, zoom: false };
+  closeRef = React.createRef();
+  componentDidMount() {
+    if (!window.FF_GALLERY) this.poll = setInterval(() => { if (window.FF_GALLERY) { clearInterval(this.poll); this.forceUpdate(); } }, 50);
+    try { const y = new URLSearchParams(location.search).get('year'); const i = (window.FF_GALLERY || []).findIndex(a => a.year === y); if (i > -1) this.setState({ tab: i }); } catch (e) {}
+    this.onKey = (e) => { if (this.state.lb < 0) return; if (e.key === 'Escape') this.lbClose(); if (e.key === 'ArrowRight') this.step(1); if (e.key === 'ArrowLeft') this.step(-1); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { clearInterval(this.poll); window.removeEventListener('keydown', this.onKey); }
+  albums() { return window.FF_GALLERY || []; }
+  items() { const a = this.albums()[this.state.tab]; return a ? a.items : []; }
+  open = (i) => { this.last = document.activeElement; document.body.style.overflow = 'hidden'; this.setState({ lb: i, zoom: false }, () => setTimeout(() => this.closeRef.current && this.closeRef.current.focus(), 30)); };
+  lbClose = () => { document.body.style.overflow = ''; this.setState({ lb: -1, zoom: false }, () => this.last && this.last.focus && this.last.focus()); };
+  step = (d) => { const n = this.items().length; this.setState(s => ({ lb: (s.lb + d + n) % n, zoom: false })); };
+  onTabKey = (e) => {
+    const n = this.albums().length; let t = this.state.tab;
+    if (e.key === 'ArrowRight') t = (t + 1) % n; else if (e.key === 'ArrowLeft') t = (t - 1 + n) % n; else return;
+    e.preventDefault(); this.setState({ tab: t }, () => { const el = document.getElementById('tab-' + this.albums()[t].year); el && el.focus(); });
+  };
+  renderVals() {
+    const albums = this.albums(), tab = this.state.tab, album = albums[tab] || { year: '', title: '', items: [] };
+    const items = album.items, lb = this.state.lb, n = items.length;
+    return {
+      tabs: albums.map((a, i) => ({ year: a.year, count: a.items.length, id: 'tab-' + a.year, active: i === tab, inactive: i !== tab, select: () => this.setState({ tab: i, lb: -1 }) })),
+      onTabKey: this.onTabKey, panelLabel: 'tab-' + album.year, album,
+      albumCount: n + (n === 1 ? ' photo' : ' photos'),
+      items: items.map((g, i) => ({ ...g, label: 'Open photo ' + (i + 1) + ' of ' + n + ': ' + g.alt, open: () => this.open(i) })),
+      lbOpen: lb >= 0 && lb < n, lb: items[lb] || {}, lbPos: (lb + 1) + ' / ' + n,
+      lbScale: this.state.zoom ? 1.6 : 1, lbCursor: this.state.zoom ? 'zoom-out' : 'zoom-in',
+      lbZoom: () => this.setState(s => ({ zoom: !s.zoom })), lbClose: this.lbClose, lbPrev: () => this.step(-1), lbNext: () => this.step(1), closeRef: this.closeRef,
+      onTouchStart: (e) => { this.tx = e.touches[0].clientX; }, onTouchEnd: (e) => { const dx = e.changedTouches[0].clientX - (this.tx || 0); if (Math.abs(dx) > 50) this.step(dx < 0 ? 1 : -1); },
+      thumbs: items.map((g, i) => ({ src: g.src, label: 'Show photo ' + (i + 1), current: i === lb ? 'true' : undefined, border: i === lb ? '#F79AA7' : 'transparent', op: i === lb ? 1 : 0.55, go: () => this.setState({ lb: i, zoom: false }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

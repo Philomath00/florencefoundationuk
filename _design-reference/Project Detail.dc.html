@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Project — Florence Foundation</title>
+<link rel="icon" href="assets/symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<script src="projects-data.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#FFFFFF;color:#302F35;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}*{box-sizing:border-box}a{color:#6A62D6;text-decoration:none}a:hover{color:#5850C4}:focus-visible{outline:3px solid #918AF0;outline-offset:3px}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}</style>
+</helmet>
+<dc-import name="Header" active="projects" hint-size="100%,96px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+
+<!-- HERO -->
+<section data-screen-label="Detail 01 Hero" aria-labelledby="pd-h" style="position:relative;min-height:clamp(380px,38vw,560px);display:flex;align-items:center;overflow:hidden;background:#302F35">
+  <img src="{{ p.hero }}" alt="{{ p.heroAlt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ p.heroPos }}">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:{{ heroGrad }}"></div>
+  <span aria-hidden="true" style="position:absolute;right:-0.08em;bottom:-0.06em;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(80px,11vw,170px);line-height:0.8;letter-spacing:-0.03em;color:#FFFFFF">{{ p.word }}</span>
+  <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:72px clamp(96px,12vw,200px) 72px 24px">
+    <nav aria-label="Breadcrumb" style="margin-bottom:28px">
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px;color:#E4E1EA">
+        <li><a href="Home.dc.html" style="color:#FFFFFF" style-hover="color:#F8C4C9">Home</a></li>
+        <li aria-hidden="true" style="color:#F79AA7">/</li>
+        <li><a href="Projects.dc.html" style="color:#FFFFFF" style-hover="color:#F8C4C9">Projects</a></li>
+        <li aria-hidden="true" style="color:#F79AA7">/</li>
+        <li aria-current="page" style="color:#F8C4C9">{{ p.cat }}</li>
+      </ol>
+    </nav>
+    <div style="display:flex;align-items:flex-start;gap:20px">
+      <span aria-hidden="true" style="display:flex;gap:7px;flex-shrink:0;margin-top:0.45em;font-size:clamp(40px,5.4vw,80px)"><span style="width:14px;height:14px;border-radius:50%;background:#F79AA7"></span><span style="width:14px;height:14px;border-radius:50%;background:#918AF0"></span></span>
+      <h1 id="pd-h" style="margin:0;max-width:960px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:1.04;letter-spacing:-0.03em;color:#FFFFFF;text-wrap:balance">{{ p.title }}</h1>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<section data-screen-label="Detail 02 Article" style="background:#FFFFFF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(64px,7vw,104px) 24px;display:flex;flex-wrap:wrap;gap:56px 72px;align-items:flex-start">
+    <article style="flex:999 1 620px;min-width:0;max-width:860px">
+      <div style="border-radius:28px;overflow:hidden;aspect-ratio:16/10;background:#F3F1EF;margin-bottom:48px">
+        <img src="{{ p.img }}" alt="{{ p.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ p.pos }};display:block">
+      </div>
+      <p style="margin:0 0 24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:#302F35;text-wrap:pretty">{{ p.lead }}</p>
+      <p style="margin:0;font-size:17px;line-height:1.75;color:#4A4852;text-wrap:pretty">{{ p.overview }}</p>
+
+      <figure style="margin:56px 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px 32px;align-items:start">
+        <svg width="64" height="40" viewBox="0 0 64 40" fill="none" stroke="#F79AA7" stroke-width="2" aria-hidden="true"><path d="M14 2C7 2 2 7 2 14s5 12 12 12c0 4-2 8-6 12 8-2 18-10 18-24C26 7 21 2 14 2Z"></path><path d="M48 2c-7 0-12 5-12 12s5 12 12 12c0 4-2 8-6 12 8-2 18-10 18-24C60 7 55 2 48 2Z"></path></svg>
+        <blockquote style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(20px,1.9vw,26px);line-height:1.45;color:#302F35;text-wrap:pretty">{{ p.quote }}</blockquote>
+      </figure>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0;border-top:2px solid #302F35">
+        <div style="padding:28px 28px 28px 0;border-bottom:1px solid #E6E2DE">
+          <h2 style="margin:0 0 12px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#6A62D6">THE NEED</h2>
+          <p style="margin:0;font-size:16.5px;line-height:1.7;color:#4A4852">{{ p.problem }}</p>
+        </div>
+        <div style="padding:28px 0;border-bottom:1px solid #E6E2DE">
+          <h2 style="margin:0 0 12px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#6A62D6">WHO IT SUPPORTS</h2>
+          <p style="margin:0;font-size:16.5px;line-height:1.7;color:#4A4852">{{ p.beneficiaries }}</p>
+        </div>
+      </div>
+
+      <h2 style="margin:56px 0 20px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(26px,2.4vw,34px);letter-spacing:-0.015em;color:#302F35">Objectives</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+        <sc-for list="{{ p.objectives }}" as="o" hint-placeholder-count="3">
+          <li style="display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:18px;background:#FAF8F7;font-size:16px;line-height:1.5;color:#302F35">
+            <span aria-hidden="true" style="flex-shrink:0;margin-top:4px;width:14px;height:14px;border-radius:50%;background:#918AF0"></span>{{ o }}
+          </li>
+        </sc-for>
+      </ul>
+
+      <div style="margin:56px 0 20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(26px,2.4vw,34px);letter-spacing:-0.015em;color:#302F35">Activities</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:#5E5C66">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:#6A62D6"></span>Ongoing</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:#F2848F"></span>Active appeal</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:50%;border:2px solid #8A8792"></span>Planned</span>
+        </div>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;border-top:2px solid #302F35">
+        <sc-for list="{{ activities }}" as="a" hint-placeholder-count="2">
+          <li style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;align-items:start;padding:22px 0;border-bottom:1px solid #E6E2DE">
+            <div>
+              <h3 style="margin:0 0 6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;color:#302F35">{{ a.t }}</h3>
+              <p style="margin:0;font-size:16px;line-height:1.6;color:#4A4852">{{ a.d }}</p>
+            </div>
+            <span style="white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;padding:7px 12px;border-radius:999px;background:{{ a.bg }};color:{{ a.fg }};border:1.5px solid {{ a.bd }}">{{ a.s }}</span>
+          </li>
+        </sc-for>
+      </ol>
+
+      <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+          <sc-for list="{{ p.photos }}" as="ph" hint-placeholder-count="2">
+            <div style="border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#F3F1EF">
+              <img src="{{ ph.src }}" alt="{{ ph.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ ph.pos }};display:block">
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </article>
+
+    <aside aria-label="Support this project" style="flex:1 1 300px;max-width:420px;position:sticky;top:120px;display:flex;flex-direction:column;gap:16px">
+      <div style="border-radius:28px;background:#302F35;color:#FFFFFF;padding:32px;position:relative;overflow:hidden">
+        <img src="assets/symbol.png" alt="" aria-hidden="true" style="position:absolute;right:-40px;top:-30px;width:160px;opacity:0.1">
+        <p style="position:relative;margin:0 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#F79AA7">SUPPORT THIS PROJECT</p>
+        <sc-if value="{{ p.amount }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative;margin:8px 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:64px;line-height:1;letter-spacing:-0.03em;color:#F79AA7">{{ p.amount }}</div>
+          <p style="position:relative;margin:0 0 24px;font-size:16px;line-height:1.55;color:#FFFFFF">{{ p.amountLabel }}</p>
+        </sc-if>
+        <sc-if value="{{ noAmount }}" hint-placeholder-val="{{ false }}">
+          <p style="position:relative;margin:0 0 24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;line-height:1.35;color:#FFFFFF">Your donation helps this programme reach more people.</p>
+        </sc-if>
+        <a href="{{ giveHref }}" style="position:relative;display:flex;align-items:center;justify-content:space-between;background:#F79AA7;color:#302F35;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:18px 24px;border-radius:999px;transition:background .2s" style-hover="background:#F8C4C9;color:#302F35">{{ giveLabel }} <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="border-radius:28px;background:#EEECFD;padding:28px 32px">
+        <h2 style="margin:0 0 16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:#302F35">Ways to contribute</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+          <li><a href="Support%20Us.dc.html#donate" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #D9D5F7;color:#302F35;font-weight:600;font-size:16px" style-hover="color:#6A62D6">Donate funds <span aria-hidden="true">↗</span></a></li>
+          <li><a href="Support%20Us.dc.html#sponsor" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #D9D5F7;color:#302F35;font-weight:600;font-size:16px" style-hover="color:#6A62D6">Sponsor a child <span aria-hidden="true">↗</span></a></li>
+          <li><a href="Contact%20Us.dc.html?enquiry=donate-goods#contact-form" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;color:#302F35;font-weight:600;font-size:16px" style-hover="color:#6A62D6">Donate goods <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section data-screen-label="Detail 03 Related" aria-labelledby="rel-h" style="background:#FAF8F7">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,120px) 24px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px">
+      <h2 id="rel-h" style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-0.02em;color:#302F35">Related Projects</h2>
+      <a href="Projects.dc.html" style="display:inline-flex;align-items:center;gap:12px;color:#302F35;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;border:2px solid #F79AA7;background:#FFFFFF;transition:background .2s" style-hover="background:#FDEEEF;color:#302F35">All Projects <span aria-hidden="true">↗</span></a>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+        <li style="position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:#302F35">
+          <a href="{{ r.href }}" style="position:absolute;inset:0;display:block;color:#FFFFFF;transition:transform .3s" style-hover="color:#FFFFFF;transform:scale(1.015)">
+            <img src="{{ r.img }}" alt="{{ r.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ r.pos }}">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:{{ r.grad }}"></div>
+            <span aria-hidden="true" style="position:absolute;right:-0.07em;bottom:-0.05em;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(56px,5vw,84px);line-height:0.8;letter-spacing:-0.03em;color:#FFFFFF">{{ r.word }}</span>
+            <div style="position:absolute;left:0;bottom:0;right:84px;padding:26px">
+              <span style="display:inline-block;margin-bottom:12px;background:#FFFFFF;color:#4B44A8;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:0.06em;padding:6px 12px;border-radius:999px;text-transform:uppercase">{{ r.cat }}</span>
+              <h3 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;line-height:1.15;color:#FFFFFF;text-wrap:balance">{{ r.title }}</h3>
+            </div>
+          </a>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section data-screen-label="Detail 04 CTA" aria-labelledby="cta-h" style="position:relative;background:#6A62D6;color:#FFFFFF;overflow:hidden">
+  <img src="assets/symbol.png" alt="" aria-hidden="true" style="position:absolute;right:max(-80px,calc((100vw - 1320px) / 2 - 40px));top:50%;transform:translateY(-50%);width:clamp(240px,30vw,420px);opacity:0.16;pointer-events:none">
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,120px) 24px">
+    <h2 id="cta-h" style="margin:0 0 40px;max-width:860px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(36px,4.4vw,64px);line-height:1.05;letter-spacing:-0.025em;color:#FFFFFF;text-wrap:balance">Your Support Can Turn Compassion Into Action.</h2>
+    <a href="Support%20Us.dc.html" style="display:inline-flex;align-items:center;gap:12px;background:#FFFFFF;color:#4B44A8;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;padding:18px 30px;border-radius:999px;transition:background .2s,transform .2s" style-hover="background:#F8C4C9;color:#302F35;transform:translateY(-2px)">Support Us <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slug&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;food-aid&quot;,&quot;child-sponsorship&quot;,&quot;education&quot;,&quot;womens-empowerment&quot;,&quot;clean-water&quot;,&quot;healthcare&quot;],&quot;default&quot;:&quot;food-aid&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.FF_PROJECTS) this.poll = setInterval(() => { if (window.FF_PROJECTS) { clearInterval(this.poll); this.forceUpdate(); } }, 50);
+    else this.setTitle();
+  }
+  componentDidUpdate() { this.setTitle(); }
+  componentWillUnmount() { clearInterval(this.poll); }
+  setTitle() { const p = this.current(); if (p) document.title = p.title + ' — Florence Foundation'; }
+  current() {
+    const data = window.FF_PROJECTS || [];
+    let slug = this.props.slug;
+    try { slug = new URLSearchParams(window.location.search).get('p') || slug; } catch (e) {}
+    return data.find(d => d.slug === slug) || data[0];
+  }
+  renderVals() {
+    const data = window.FF_PROJECTS || [];
+    const p = this.current() || { objectives: [], activities: [], photos: [] };
+    const i = data.indexOf(p);
+    const grads = {
+      lav: 'linear-gradient(180deg,rgba(106,98,214,0) 35%,rgba(106,98,214,0.55) 65%,rgba(58,52,140,0.95) 100%)',
+      coral: 'linear-gradient(180deg,rgba(242,132,143,0) 35%,rgba(242,132,143,0.55) 65%,rgba(150,52,72,0.95) 100%)'
+    };
+    const status = {
+      'Ongoing': { bg: '#6A62D6', fg: '#FFFFFF', bd: '#6A62D6' },
+      'Active appeal': { bg: '#FDEEEF', fg: '#A93A4C', bd: '#F2848F' },
+      'Planned': { bg: '#FFFFFF', fg: '#5E5C66', bd: '#B9B6C0' }
+    };
+    const give = { meals: ['Support Meals', 'Support%20Us.dc.html#meals'], sponsor: ['Sponsor a Child', 'Support%20Us.dc.html#sponsor'], donate: ['Donate Now', 'Support%20Us.dc.html#donate'] }[p.give || 'donate'];
+    const related = data.length ? [1, 2, 3].map(k => data[(i + k) % data.length]) : [];
+    return {
+      p,
+      heroGrad: p.tint === 'coral'
+        ? 'linear-gradient(90deg,rgba(36,34,44,0.8) 0%,rgba(36,34,44,0.4) 45%,rgba(242,132,143,0.6) 100%)'
+        : 'linear-gradient(90deg,rgba(36,34,44,0.8) 0%,rgba(36,34,44,0.4) 45%,rgba(106,98,214,0.6) 100%)',
+      activities: (p.activities || []).map(a => ({ ...a, ...(status[a.s] || status.Planned) })),
+      hasPhotos: (p.photos || []).length > 0,
+      noAmount: !p.amount,
+      giveLabel: give[0], giveHref: give[1],
+      related: related.map(r => ({ ...r, href: 'Project%20Detail.dc.html?p=' + r.slug, grad: grads[r.tint] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

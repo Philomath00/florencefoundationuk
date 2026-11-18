@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand (purple) */
+  --color-brand-50: #eeecfd;
+  --color-brand-200: #c9c4fa;
+  --color-brand-300: #918af0;
+  --color-brand-500: #6a62d6;
+  --color-brand-600: #5850c4;
+  --color-brand-700: #4b44a8;
+  --color-brand-800: #3a348c;
+
+  /* Accent (coral/pink) */
+  --color-accent-50: #fdeeef;
+  --color-accent-200: #f8c4c9;
+  --color-accent-300: #f79aa7;
+  --color-accent-500: #f2848f;
+  --color-accent-700: #c24a5c;
+  --color-accent-800: #a93a4c;
+  --color-accent-900: #7a2434;
+
+  /* Ink (near-black / dark sections) */
+  --color-ink-900: #302f35;
+  --color-ink-800: #3d3b45;
+  --color-ink-700: #4a4852;
+  --color-ink-600: #5e5c66;
+  --color-ink-divider: #47454e;
+  --color-ink-muted: #a9a5b1;
+  --color-ink-muted-2: #c9c6d0;
+  --color-ink-light: #d9d6de;
+  --color-ink-faint: #e4e1ea;
+
+  /* Surfaces */
+  --color-surface: #faf8f7;
+  --color-surface-alt: #f3f1ef;
+  --color-border: #e6e2de;
+  --color-border-2: #e2deda;
+  --color-border-3: #ece9e6;
+  --color-border-4: #f0edea;
+
+  /* Status */
+  --color-warn-bg: #fff6e5;
+  --color-warn-border: #f0c878;
+  --color-warn-text: #5c4210;
+
+  --font-heading: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-200: var(--color-accent-200);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-900: var(--color-accent-900);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-divider: var(--color-ink-divider);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-muted-2: var(--color-ink-muted-2);
+  --color-ink-light: var(--color-ink-light);
+  --color-ink-faint: var(--color-ink-faint);
+
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-border: var(--color-border);
+  --color-border-2: var(--color-border-2);
+  --color-border-3: var(--color-border-3);
+  --color-border-4: var(--color-border-4);
+
+  --color-warn-bg: var(--color-warn-bg);
+  --color-warn-border: var(--color-warn-border);
+  --color-warn-text: var(--color-warn-text);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink-900);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-brand-500);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand-300);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes ff-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ff-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ff-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ff-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-ff-fade {
+  animation: ff-fade 0.25s ease;
+}
+
+.animate-ff-zoom {
+  animation: ff-zoom 0.3s ease;
+}
+
+.animate-ff-marquee {
+  animation: ff-marquee 48s linear infinite;
+}
+
+.animate-ff-marquee-reverse {
+  animation: ff-marquee-reverse 48s linear infinite;
+}
