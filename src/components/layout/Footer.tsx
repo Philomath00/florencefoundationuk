@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/content/site";
+import type { ResolvedSiteSettings } from "@/lib/site-settings";
 
-export default function Footer() {
+export default function Footer({ settings }: { settings: ResolvedSiteSettings }) {
   const year = new Date().getFullYear();
 
   return (
@@ -56,12 +56,12 @@ export default function Footer() {
             <h2 className="mb-2 font-heading text-[13px] font-bold tracking-[0.12em] text-accent-300 uppercase">
               Contact
             </h2>
-            <a href={`mailto:${siteConfig.email}`} className="text-base text-white break-words hover:text-brand-200">
-              {siteConfig.email}
+            <a href={`mailto:${settings.email}`} className="text-base text-white break-words hover:text-brand-200">
+              {settings.email}
             </a>
-            <span className="text-[15px] text-ink-muted">Telephone: to be confirmed</span>
+            <span className="text-[15px] text-ink-muted">{settings.phone}</span>
             <a
-              href={siteConfig.social.instagram}
+              href={settings.social.instagram}
               target="_blank"
               rel="noopener"
               aria-label="Florence Foundation on Instagram"
@@ -80,8 +80,8 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap justify-between gap-3 border-t border-ink-divider py-8 text-sm text-ink-muted">
-          <span>© {year} Florence Foundation. All rights reserved.</span>
-          <span>We Empower People, We Feed People, We Give Hope to People.</span>
+          <span>© {year} {settings.name}. All rights reserved.</span>
+          <span>{settings.tagline}</span>
         </div>
       </div>
     </footer>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import PillLink from "@/components/ui/PillLink";
 import CtaBand from "@/components/ui/CtaBand";
 import BankDetails from "@/components/support/BankDetails";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Support Us",
@@ -20,7 +21,9 @@ const purpose = [
   { n: "05", t: "Transparent action", d: "Responsible humanitarian action guides everything we do." },
 ];
 
-export default function SupportPage() {
+export default async function SupportPage() {
+  const settings = await getSiteSettings();
+
   return (
     <>
       {/* HERO */}
@@ -177,11 +180,11 @@ export default function SupportPage() {
             </svg>
             <span>
               <strong>Sample details for design review.</strong> These account numbers are
-              placeholders and must be replaced with Florence Foundation&apos;s verified banking
-              information before launch.
+              placeholders — update them under Website Settings in{" "}
+              <a href="/admin/settings" className="underline">/admin</a> before launch.
             </span>
           </div>
-          <BankDetails />
+          <BankDetails bankAccounts={settings.bankAccounts} />
         </div>
       </section>
 

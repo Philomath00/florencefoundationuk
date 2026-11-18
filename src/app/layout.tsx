@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/content/site";
+import { getSiteSettings } from "@/lib/site-settings";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -19,54 +20,60 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.defaultTitle,
-    template: `%s — ${siteConfig.name}`,
-  },
-  description: siteConfig.defaultDescription,
-  keywords: [...siteConfig.keywords],
-  openGraph: {
-    type: "website",
-    locale: "en_GB",
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.defaultTitle,
-    description: siteConfig.defaultDescription,
-    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.defaultTitle,
-    description: siteConfig.defaultDescription,
-    images: [siteConfig.ogImage],
-  },
-  icons: {
-    icon: "/images/symbol.png",
-  },
-  // Only the production deployment should ever be indexed — preview and
-  // local builds get noindex so they never compete with the real domain.
-  robots:
-    process.env.VERCEL_ENV === "production"
-      ? { index: true, follow: true }
-      : { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "NGO",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/images/logo-color.png`,
-  description: siteConfig.defaultDescription,
-  email: siteConfig.email,
-  sameAs: [siteConfig.social.instagram],
-  areaServed: ["United Kingdom", "Nigeria"],
-  slogan: siteConfig.tagline,
-};
+  return {
+    metadataBase: new URL(settings.url),
+    title: {
+      default: settings.defaultTitle,
+      template: `%s — ${settings.name}`,
+    },
+    description: settings.defaultDescription,
+    keywords: [...siteConfig.keywords],
+    openGraph: {
+      type: "website",
+      locale: "en_GB",
+      url: settings.url,
+      siteName: settings.name,
+      title: settings.defaultTitle,
+      description: settings.defaultDescription,
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: settings.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: settings.defaultTitle,
+      description: settings.defaultDescription,
+      images: [siteConfig.ogImage],
+    },
+    icons: {
+      icon: "/images/symbol.png",
+    },
+    // Only the production deployment should ever be indexed — preview and
+    // local builds get noindex so they never compete with the real domain.
+    robots:
+      process.env.VERCEL_ENV === "production"
+        ? { index: true, follow: true }
+        : { index: false, follow: false },
+  };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings();
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    name: settings.name,
+    url: settings.url,
+    logo: `${settings.url}/images/logo-color.png`,
+    description: settings.defaultDescription,
+    email: settings.email,
+    sameAs: [settings.social.instagram],
+    areaServed: ["United Kingdom", "Nigeria"],
+    slogan: settings.tagline,
+  };
+
   return (
     <html lang="en" className={`${plusJakarta.variable} ${dmSans.variable}`}>
       <body className="flex min-h-screen flex-col bg-white font-body text-ink-900 antialiased">
@@ -85,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content" className="flex-1">
           {children}
         </main>
-        <Footer />
+        <Footer settings={settings} />
       </body>
     </html>
   );

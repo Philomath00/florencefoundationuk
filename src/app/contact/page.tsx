@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
-import { siteConfig } from "@/content/site";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const settings = await getSiteSettings();
+
   return (
     <>
       {/* MAP HERO */}
@@ -50,7 +52,7 @@ export default function ContactPage() {
                 <Image src="/images/symbol.png" alt="" aria-hidden="true" width={36} height={36} className="h-9 w-9" />
                 <div>
                   <p className="m-0 mb-0.5 font-heading text-[15px] font-extrabold text-ink-900">Florence Foundation</p>
-                  <p className="m-0 text-sm leading-snug text-ink-700">{siteConfig.address}</p>
+                  <p className="m-0 text-sm leading-snug text-ink-700">{settings.address}</p>
                 </div>
               </div>
             </div>
@@ -89,7 +91,7 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <p className="m-0 mb-0.5 text-[13px] text-ink-muted">Email</p>
-                    <a href={`mailto:${siteConfig.email}`} className="font-semibold text-white break-words hover:text-accent-200">{siteConfig.email}</a>
+                    <a href={`mailto:${settings.email}`} className="font-semibold text-white break-words hover:text-accent-200">{settings.email}</a>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -100,7 +102,7 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <p className="m-0 mb-0.5 text-[13px] text-ink-muted">Telephone (sample)</p>
-                    <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`} className="font-semibold text-white hover:text-accent-200">{siteConfig.phone}</a>
+                    <a href={`tel:${settings.phone.replace(/[^+\d]/g, "")}`} className="font-semibold text-white hover:text-accent-200">{settings.phone}</a>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -112,7 +114,7 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <p className="m-0 mb-0.5 text-[13px] text-ink-muted">Address (sample)</p>
-                    <p className="m-0 font-semibold leading-snug text-white">{siteConfig.address}</p>
+                    <p className="m-0 font-semibold leading-snug text-white">{settings.address}</p>
                   </div>
                 </li>
               </ul>
@@ -121,7 +123,7 @@ export default function ContactPage() {
               <h2 className="mb-2 font-heading text-xl font-extrabold text-ink-900">Stay Connected with Our Mission.</h2>
               <p className="mb-5 text-[15px] leading-relaxed text-ink-700">Follow our work and community updates.</p>
               <a
-                href={siteConfig.social.instagram}
+                href={settings.social.instagram}
                 target="_blank"
                 rel="noopener"
                 className="flex items-center gap-3.5 rounded-2xl bg-white px-[18px] py-3.5 font-bold text-ink-900 transition hover:-translate-y-0.5 hover:text-brand-500"

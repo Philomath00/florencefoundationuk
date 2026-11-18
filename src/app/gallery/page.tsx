@@ -3,7 +3,34 @@ import PageHero from "@/components/ui/PageHero";
 import Kicker from "@/components/ui/Kicker";
 import CtaBand from "@/components/ui/CtaBand";
 import GalleryTabs from "@/components/gallery/GalleryTabs";
-import { galleryAlbums } from "@/content/gallery";
+import { galleryAlbums as staticAlbums } from "@/content/gallery";
+import { getSupabaseServer, isSupabaseConfigured } from "@/lib/supabase/server";
+
+async function getGalleryAlbums() {
+  if (!isSupabaseConfigured()) return staticAlbums;
+  try {
+    const supabase = getSupabaseServer();
+    const [{ data: albums }, { data: images }] = await Promise.all([
+      supabase.from("gallery_albums").select("*").order("sort_order", { ascending: true }),
+      supabase
+        .from("gallery_images")
+        .select("*")
+        .eq("published", true)
+        .order("sort_order", { ascending: true }),
+    ]);
+    if (!albums || albums.length === 0) return staticAlbums;
+
+    return albums.map((album) => ({
+      year: album.year,
+      title: album.title,
+      items: (images ?? [])
+        .filter((img) => img.album_id === album.id)
+        .map((img) => ({ src: img.image_url, alt: img.alt, ratio: img.ratio })),
+    }));
+  } catch {
+    return staticAlbums;
+  }
+}
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -12,7 +39,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/gallery" },
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const galleryAlbums = await getGalleryAlbums();
+
   return (
     <>
       <PageHero

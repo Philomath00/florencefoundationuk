@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { bankAccounts } from "@/content/site";
+import type { BankAccount } from "@/lib/site-settings";
 
-export default function BankDetails() {
+export default function BankDetails({ bankAccounts }: { bankAccounts: BankAccount[] }) {
   const [copied, setCopied] = useState("");
   const [msg, setMsg] = useState("");
 
