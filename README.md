@@ -45,7 +45,12 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   - **Hero Slider** — upload/edit/reorder/publish/delete slide images.
   - **Gallery** — albums + multi-image upload (select several files at once — alt
     text is pre-filled from each file name and editable afterward), publish toggle
-    per image.
+    per image. Albums can be collapsed and reordered (↑/↓), and photos within an
+    album can be reordered (‹ ›) independently of upload order — so photos added
+    out of sequence can be moved into place by hand. Admin tiles are sized to fit 6
+    per row. Every uploaded image (hero, gallery, blog, projects) is automatically
+    compressed to WebP client-side before it reaches storage, so the site never
+    carries unnecessarily heavy images.
   - **Projects** — full CRUD on all six programme pages (objectives, activities,
     photos, giving CTA) — these were static files, now genuinely admin-editable.
   - **Blog** — full CRUD: Markdown content, featured image, tags, draft/published/
@@ -69,9 +74,15 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
   Google Search Console / Bing Webmaster Tools verification codes can be pasted into
   Website Settings whenever you add the site there — no code change needed.
 - A proper **favicon** (the brand mark, not the default Next.js/Vercel icon the
-  scaffold ships with) and a branded **Open Graph image** (`public/images/og-image.jpg`)
-  so link previews in iMessage/WhatsApp/Slack/social media show the Florence
-  Foundation logo and site name instead of a generic icon.
+  scaffold ships with) and a branded **Open Graph image** (`public/images/og-image.jpg`,
+  the icon + wordmark on the brand purple) so link previews in iMessage/WhatsApp/Slack/
+  social media show the Florence Foundation logo and site name instead of a generic icon.
+- The Nigeria bank account's SWIFT/BIC field is optional — leaving it blank in Website
+  Settings hides that row on `/support` entirely rather than showing an empty value. The
+  bank details block is also fully responsive on mobile (stacked label/value/copy rows
+  instead of a stretched single column).
+- Instagram handle is derived from the URL set in Website Settings, so the Footer and
+  Contact page always show the same handle with nothing to keep in sync by hand.
 
 **Not built yet:** blog category UI (the `blog_categories` table exists but has no
 admin screen yet — posts currently only have free-text tags), a way to add further
