@@ -73,7 +73,7 @@ export default function Footer({ settings }: { settings: ResolvedSiteSettings })
                   <path d="M17.5 6.5h.01" />
                 </svg>
               </span>
-              @florencefoundationuk
+              {settings.social.instagramHandle}
             </a>
           </div>
         </div>

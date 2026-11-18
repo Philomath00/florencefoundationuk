@@ -29,7 +29,7 @@ export const siteConfig = {
   // PLACEHOLDER — sample address from the design export, not yet confirmed.
   address: "20 Long Acre, Covent Garden, London WC2E 9LY, United Kingdom",
   social: {
-    instagram: "https://instagram.com/florencefoundationuk",
+    instagram: "https://instagram.com/florencefoundation_",
   },
 } as const;
 

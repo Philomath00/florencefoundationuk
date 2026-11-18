@@ -136,7 +136,7 @@ export default async function ContactPage() {
                   </svg>
                 </span>
                 <span className="flex flex-col">
-                  <span className="text-[13px] font-medium text-ink-600">Instagram</span>@florencefoundationuk
+                  <span className="text-[13px] font-medium text-ink-600">Instagram</span>{settings.social.instagramHandle}
                 </span>
                 <span aria-hidden="true" className="ml-auto">↗</span>
               </a>

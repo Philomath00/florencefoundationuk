@@ -16,7 +16,7 @@ export type ResolvedSiteSettings = {
   email: string;
   phone: string;
   address: string;
-  social: { instagram: string };
+  social: { instagram: string; instagramHandle: string };
   defaultTitle: string;
   defaultDescription: string;
   bankAccounts: BankAccount[];
@@ -26,6 +26,12 @@ export type ResolvedSiteSettings = {
   whatsappMessage: string;
 };
 
+/** Pulls "handle" out of an https://instagram.com/handle URL, trailing slash and all. */
+function instagramHandleFromUrl(url: string): string {
+  const match = url.match(/instagram\.com\/([^/?#]+)/i);
+  return match ? `@${match[1]}` : "";
+}
+
 function fallbackSettings(): ResolvedSiteSettings {
   return {
     name: staticSiteConfig.name,
@@ -34,7 +40,10 @@ function fallbackSettings(): ResolvedSiteSettings {
     email: staticSiteConfig.email,
     phone: staticSiteConfig.phone,
     address: staticSiteConfig.address,
-    social: { instagram: staticSiteConfig.social.instagram },
+    social: {
+      instagram: staticSiteConfig.social.instagram,
+      instagramHandle: instagramHandleFromUrl(staticSiteConfig.social.instagram),
+    },
     defaultTitle: staticSiteConfig.defaultTitle,
     defaultDescription: staticSiteConfig.defaultDescription,
     bankAccounts: staticBankAccounts.map((b) => ({ ...b, rows: b.rows.map(([k, v]) => [k, v]) })),
@@ -87,7 +96,10 @@ export async function getSiteSettings(): Promise<ResolvedSiteSettings> {
       email: data.contact_email || fallback.email,
       phone: data.phone || fallback.phone,
       address: data.address || fallback.address,
-      social: { instagram: data.instagram_url || fallback.social.instagram },
+      social: {
+        instagram: data.instagram_url || fallback.social.instagram,
+        instagramHandle: instagramHandleFromUrl(data.instagram_url || fallback.social.instagram),
+      },
       defaultTitle: data.default_seo_title || fallback.defaultTitle,
       defaultDescription: data.default_seo_description || fallback.defaultDescription,
       bankAccounts: bankAccounts.length ? bankAccounts : fallback.bankAccounts,
