@@ -50,7 +50,7 @@ function fallbackSettings(): ResolvedSiteSettings {
     googleSiteVerification: "",
     bingSiteVerification: "",
     whatsappNumber: "",
-    whatsappMessage: "Thank you for reaching out to Florence Foundation. We welcome your Support",
+    whatsappMessage: "Thank you for reaching out to Grace Compassion Crew Foundation. We welcome your Support",
   };
 }
 

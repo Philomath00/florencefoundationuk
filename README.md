@@ -1,8 +1,9 @@
-# Florence Foundation Website
+# Grace Compassion Crew Foundation Website
 
-Production Next.js site for Florence Foundation, built from the approved Claude Design
-export in [`_design-reference/`](_design-reference). That folder is the visual source of
-truth — layout, branding, typography, copy and imagery must not be redesigned.
+Production Next.js site for Grace Compassion Crew Foundation (rebranded from Florence
+Foundation — see "Rebrand notes" below), built from the approved Claude Design export in
+[`_design-reference/`](_design-reference). That folder is the visual source of truth —
+layout, branding, typography, copy and imagery must not be redesigned.
 
 ## Status
 
@@ -76,7 +77,8 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
 - A proper **favicon** (the brand mark, not the default Next.js/Vercel icon the
   scaffold ships with) and a branded **Open Graph image** (`public/images/og-image.jpg`,
   the icon + wordmark on the brand purple) so link previews in iMessage/WhatsApp/Slack/
-  social media show the Florence Foundation logo and site name instead of a generic icon.
+  social media show the Grace Compassion Crew Foundation logo and site name instead of a
+  generic icon.
 - The Nigeria bank account's SWIFT/BIC field is optional — leaving it blank in Website
   Settings hides that row on `/support` entirely rather than showing an empty value. The
   bank details block is also fully responsive on mobile (stacked label/value/copy rows
@@ -88,6 +90,31 @@ truth — layout, branding, typography, copy and imagery must not be redesigned.
 admin screen yet — posts currently only have free-text tags), a way to add further
 admin users from within `/admin` itself (today that's one manual SQL step), and a
 "forgot password" link on the admin login page.
+
+## Rebrand notes (Florence Foundation → Grace Compassion Crew Foundation)
+
+The organization's display name, logo wordmark and Open Graph image were changed from
+"Florence Foundation" to "Grace Compassion Crew Foundation" everywhere in the UI (public
+site + `/admin`), the site's metadata/SEO tags, structured data, and the `site_settings`
+database row. The icon mark itself (the swoosh + dots shape) is unchanged, since the new
+logo files use the same icon — only the wordmark text changed.
+
+**Deliberately left untouched**, since these are real external accounts/identifiers tied
+to the old name and renaming them isn't a code change — decide these separately:
+
+- The domain (`florencefoundation.co.uk`), the contact mailbox
+  (`info@florencefoundation.co.uk`), and the Instagram handle (`@florencefoundation_`).
+  The visible brand name on the site no longer matches these, which may look inconsistent
+  to visitors until (if ever) new accounts are set up to match.
+- The GitHub repo name (`florencefoundationuk`), the Vercel project
+  (`florence-foundation-website` / its `.vercel.app` address), and the Supabase project
+  name (`florence-foundation`) — renaming these is possible but has no effect on visitors
+  and risks breaking deploy hooks/links if done carelessly, so left as-is.
+- **Bank account "Account name" fields** now read "Grace Compassion Crew Foundation" in
+  both the code fallback and the live Website Settings — but this must match the actual
+  **legal name on the bank account** for transfers to go through; if the real UK/Nigeria
+  accounts are still registered under "Florence Foundation" legally, update the bank's
+  account name first, or correct this field back, before publishing.
 
 ## Admin access
 

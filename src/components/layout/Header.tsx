@@ -88,10 +88,10 @@ export default function Header() {
             scrolled ? "h-[76px]" : "h-20 lg:h-24"
           }`}
         >
-          <Link href="/" aria-label="Florence Foundation home" className="flex flex-shrink-0 items-center">
+          <Link href="/" aria-label="Grace Compassion Crew Foundation home" className="flex flex-shrink-0 items-center">
             <Image
-              src="/images/logo-color.png"
-              alt="Florence Foundation"
+              src="/images/logo-gccf-color.png"
+              alt="Grace Compassion Crew Foundation"
               width={200}
               height={52}
               className="h-11 w-auto lg:h-[52px]"
@@ -170,7 +170,7 @@ export default function Header() {
             className="fixed inset-y-0 right-0 z-[100] flex w-[min(88vw,380px)] flex-col overflow-y-auto bg-white px-6 py-5 font-body"
           >
             <div className="mb-7 flex items-center justify-between">
-              <Image src="/images/logo-color.png" alt="Florence Foundation" width={160} height={44} className="h-11 w-auto" />
+              <Image src="/images/logo-gccf-color.png" alt="Grace Compassion Crew Foundation" width={160} height={44} className="h-11 w-auto" />
               <button
                 type="button"
                 ref={closeRef}

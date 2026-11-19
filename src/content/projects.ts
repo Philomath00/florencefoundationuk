@@ -1,4 +1,4 @@
-// Florence Foundation programme data. Source: Florence Foundation Narrative.
+// Grace Compassion Crew Foundation programme data. Source: Grace Compassion Crew Foundation Narrative.
 // Status values: 'Ongoing' (described in present tense), 'Active appeal'
 // (currently seeking donations), 'Planned' (described as future intent).
 
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     amount: "£5",
     amountLabel: "Child sponsorship from £5 per month.",
     lead: "Through child sponsorship, we seek to support children's essential needs, wellbeing, and access to opportunities that help them build a better future.",
-    overview: "Sponsoring a child through Florence Foundation helps give them access to nutritious meals, a loving and caring home, good hygiene and sanitation, and much more.",
+    overview: "Sponsoring a child through Grace Compassion Crew Foundation helps give them access to nutritious meals, a loving and caring home, good hygiene and sanitation, and much more.",
     problem: "Children growing up in poverty often go without the essentials and opportunities that other children rely on.",
     objectives: [
       "Access to nutritious meals",
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     activities: [
       { t: "Monthly child sponsorship", d: "£5 a month helps a sponsored child live well, eat well, and have a roof over their head.", s: "Active appeal" },
     ],
-    beneficiaries: "Children supported through the Florence Foundation sponsorship programme.",
+    beneficiaries: "Children supported through the Grace Compassion Crew Foundation sponsorship programme.",
     quote: "Our aim is to give them the opportunities that other children have.",
     photos: [
       { src: "/images/children-two.jpg", pos: "50% 20%", alt: "Two children, one with an arm around the other" },

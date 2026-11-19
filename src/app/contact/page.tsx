@@ -8,7 +8,7 @@ import { getSiteSettings } from "@/lib/site-settings";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Florence Foundation to support our initiatives, explore a partnership, donate essential goods, or learn more about our humanitarian work.",
+    "Get in touch with Grace Compassion Crew Foundation to support our initiatives, explore a partnership, donate essential goods, or learn more about our humanitarian work.",
   alternates: { canonical: "/contact" },
 };
 
@@ -20,7 +20,7 @@ export default async function ContactPage() {
       {/* MAP HERO */}
       <section aria-labelledby="c-hero-h" className="relative h-[clamp(460px,44vw,600px)] overflow-hidden bg-brand-50">
         <iframe
-          title="Map showing Florence Foundation's sample address in London"
+          title="Map showing Grace Compassion Crew Foundation's sample address in London"
           src="https://www.openstreetmap.org/export/embed.html?bbox=-0.1395%2C51.5075%2C-0.1085%2C51.5195&layer=mapnik&marker=51.5131%2C-0.1257"
           className="absolute inset-0 h-full w-full border-0 [filter:saturate(0.6)_hue-rotate(10deg)]"
           loading="lazy"
@@ -51,7 +51,7 @@ export default async function ContactPage() {
               <div className="ml-[53px] inline-flex items-start gap-3.5 rounded-2xl bg-white px-5 py-4 shadow-xl">
                 <Image src="/images/symbol.png" alt="" aria-hidden="true" width={36} height={36} className="h-9 w-9" />
                 <div>
-                  <p className="m-0 mb-0.5 font-heading text-[15px] font-extrabold text-ink-900">Florence Foundation</p>
+                  <p className="m-0 mb-0.5 font-heading text-[15px] font-extrabold text-ink-900">Grace Compassion Crew Foundation</p>
                   <p className="m-0 text-sm leading-snug text-ink-700">{settings.address}</p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default async function ContactPage() {
             </h2>
             <p className="mb-10 max-w-[620px] text-lg leading-[1.7] text-ink-700">
               Whether you would like to support our initiatives, explore a partnership, donate
-              essential goods, or learn more about Florence Foundation, we welcome your enquiry.
+              essential goods, or learn more about Grace Compassion Crew Foundation, we welcome your enquiry.
             </p>
             <Suspense fallback={null}>
               <ContactForm />

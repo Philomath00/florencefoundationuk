@@ -1,17 +1,23 @@
 // Site-wide configuration and fallback content.
 // Fields marked PLACEHOLDER were sample data in the design export and must be
-// confirmed with Florence Foundation and/or moved into Website Settings in /admin
+// confirmed with Grace Compassion Crew Foundation and/or moved into Website Settings in /admin
 // before launch.
+//
+// NOTE: `url`, `email` and `social.instagram` below still point at the
+// florencefoundation.co.uk domain / @florencefoundation_ handle — renaming the
+// organization's display name doesn't move these to new accounts. Update them
+// here (and in Website Settings in /admin, which take priority over this file)
+// once new domain/email/social accounts for Grace Compassion Crew Foundation exist.
 
 export const siteConfig = {
-  name: "Florence Foundation",
+  name: "Grace Compassion Crew Foundation",
   tagline: "We Empower People, We Feed People, We Give Hope to People.",
   url: "https://www.florencefoundation.co.uk",
-  defaultTitle: "Florence Foundation — We Empower People, We Feed People, We Give Hope to People",
+  defaultTitle: "Grace Compassion Crew Foundation — We Empower People, We Feed People, We Give Hope to People",
   defaultDescription:
-    "Florence Foundation is a UK and Nigeria based charity providing food aid, clean water, healthcare, education, child sponsorship and women's empowerment programmes across Africa.",
+    "Grace Compassion Crew Foundation is a UK and Nigeria based charity providing food aid, clean water, healthcare, education, child sponsorship and women's empowerment programmes across Africa.",
   keywords: [
-    "Florence Foundation",
+    "Grace Compassion Crew Foundation",
     "humanitarian aid charity UK",
     "poverty alleviation Nigeria",
     "food aid charity",
@@ -34,8 +40,12 @@ export const siteConfig = {
 } as const;
 
 // PLACEHOLDER — sample bank details from the design export. Must be replaced
-// with Florence Foundation's verified banking information before launch.
+// with Grace Compassion Crew Foundation's verified banking information before launch.
 // This will move into Website Settings (/admin) once Supabase is connected.
+//
+// IMPORTANT: "Account name" must match the LEGAL name on the actual bank
+// account, not just the brand name — a mismatch can cause bank transfers to
+// be rejected or flagged. Confirm with the bank before relying on this value.
 export const bankAccounts = [
   {
     key: "uk",
@@ -43,7 +53,7 @@ export const bankAccounts = [
     country: "UK Account",
     currency: "GBP £",
     rows: [
-      ["Account name", "Florence Foundation"],
+      ["Account name", "Grace Compassion Crew Foundation"],
       ["Bank name", "Barclays Bank UK PLC"],
       ["Sort code", "20-45-77"],
       ["Account number", "43218765"],
@@ -57,7 +67,7 @@ export const bankAccounts = [
     country: "Nigeria Account",
     currency: "NGN ₦",
     rows: [
-      ["Account name", "Florence Foundation"],
+      ["Account name", "Grace Compassion Crew Foundation"],
       ["Bank name", "Zenith Bank Plc"],
       ["Account number", "1013579246"],
       ["Account type", "Current"],

@@ -9,7 +9,7 @@ import { getSiteSettings } from "@/lib/site-settings";
 export const metadata: Metadata = {
   title: "Support Us",
   description:
-    "Support Florence Foundation through donations, child sponsorship, or by giving essential goods. Every contribution helps provide food, care, education and opportunities to vulnerable communities.",
+    "Support Grace Compassion Crew Foundation through donations, child sponsorship, or by giving essential goods. Every contribution helps provide food, care, education and opportunities to vulnerable communities.",
   alternates: { canonical: "/support" },
 };
 
@@ -42,7 +42,7 @@ export default async function SupportPage() {
               Your Generosity Can Make a Difference.
             </h1>
             <p className="mt-7 mb-10 max-w-[520px] text-lg leading-[1.7] text-ink-700">
-              Every contribution helps Florence Foundation pursue its mission of providing food,
+              Every contribution helps Grace Compassion Crew Foundation pursue its mission of providing food,
               care, education, and opportunities to vulnerable communities.
             </p>
             <div className="flex flex-wrap gap-3.5">
@@ -73,7 +73,7 @@ export default async function SupportPage() {
               <span className="font-heading text-[15px] font-extrabold text-brand-500">01</span>
               <h3 className="mt-10 mb-3 font-heading text-[26px] font-extrabold tracking-[-0.015em] text-ink-900">Make a Donation</h3>
               <p className="mb-7 flex-1 text-base leading-relaxed text-ink-700">
-                Contribute financially to support Florence Foundation&apos;s humanitarian
+                Contribute financially to support Grace Compassion Crew Foundation&apos;s humanitarian
                 programmes and community initiatives.
               </p>
               <PillLink href="#donate">Donate Now <span aria-hidden="true">↓</span></PillLink>
@@ -163,7 +163,7 @@ export default async function SupportPage() {
             <div>
               <p className="mb-4 font-heading text-[13px] font-bold tracking-[0.16em] text-brand-500">DONATE BY BANK TRANSFER</p>
               <h2 id="bank-h" className="m-0 font-heading text-[clamp(34px,3.8vw,54px)] font-extrabold leading-[1.08] tracking-[-0.02em] text-ink-900">
-                Give directly to Florence Foundation.
+                Give directly to Grace Compassion Crew Foundation.
               </h2>
             </div>
             <p className="max-w-[560px] text-[17px] leading-[1.7] text-ink-700">

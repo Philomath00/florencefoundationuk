@@ -10,7 +10,7 @@ import { aboutAreas, aboutImpact, team } from "@/content/about";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Florence Foundation is dedicated to creating meaningful change in marginalised communities across the United Kingdom, Nigeria and the wider African continent through poverty alleviation, clean water, healthcare, education and women's empowerment.",
+    "Grace Compassion Crew Foundation is dedicated to creating meaningful change in marginalised communities across the United Kingdom, Nigeria and the wider African continent through poverty alleviation, clean water, healthcare, education and women's empowerment.",
   alternates: { canonical: "/about" },
 };
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
         imagePos="48% 35%"
         watermark="Hope"
         crumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
-        title="About Florence Foundation"
+        title="About Grace Compassion Crew Foundation"
         subtitle="Driven by Compassion. Committed to Hope."
       />
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <span className="block font-heading text-[clamp(48px,6.4vw,96px)] leading-[0.95] font-extrabold tracking-[-0.035em] text-transparent [-webkit-text-stroke:1.5px_#302F35]">
               African continent
             </span>
-            <p className="mt-1 text-sm text-ink-600">Where Florence Foundation works</p>
+            <p className="mt-1 text-sm text-ink-600">Where Grace Compassion Crew Foundation works</p>
           </div>
           <div>
             <Kicker>WHO WE ARE</Kicker>
@@ -51,7 +51,7 @@ export default function AboutPage() {
               Building Hope. Empowering Communities.
             </h2>
             <p className="mb-5 font-heading text-[19px] font-semibold leading-[1.6] text-ink-900">
-              Florence Foundation is dedicated to creating meaningful change in marginalised
+              Grace Compassion Crew Foundation is dedicated to creating meaningful change in marginalised
               communities by addressing poverty, hunger, healthcare needs, access to clean water,
               educational inequality, and barriers to women&apos;s empowerment.
             </p>
@@ -258,7 +258,7 @@ export default function AboutPage() {
               The people behind our mission.
             </h2>
             <p className="mb-8 text-[17px] leading-relaxed text-ink-700">
-              Florence Foundation is led by people committed to compassion, dignity, and
+              Grace Compassion Crew Foundation is led by people committed to compassion, dignity, and
               meaningful change.
             </p>
             <PillLink href="/contact" variant="accent" className="border-2 border-accent-300 !bg-white !text-ink-900 hover:!bg-accent-50">

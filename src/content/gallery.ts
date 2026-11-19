@@ -20,7 +20,7 @@ function album(
     title,
     items: ids.map((id, i) => ({
       src: base + prefix + id + ".jpg",
-      alt: alts[i] || "Florence Foundation community outreach",
+      alt: alts[i] || "Grace Compassion Crew Foundation community outreach",
       ratio: ratios[i] || "4/3",
     })),
   };

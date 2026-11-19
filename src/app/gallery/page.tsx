@@ -35,7 +35,7 @@ async function getGalleryAlbums() {
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Photos from Florence Foundation's community outreach, Grace & Mercy Project (GAMP) ceremonies, and humanitarian work across Nigeria and the wider African continent.",
+    "Photos from Grace Compassion Crew Foundation's community outreach, Grace & Mercy Project (GAMP) ceremonies, and humanitarian work across Nigeria and the wider African continent.",
   alternates: { canonical: "/gallery" },
 };
 
@@ -65,7 +65,7 @@ export default async function GalleryPage() {
             </div>
             <p className="max-w-[560px] text-lg leading-[1.7] text-ink-700">
               Explore moments that reflect the people, communities, and causes at the heart of
-              Florence Foundation&apos;s mission.
+              Grace Compassion Crew Foundation&apos;s mission.
             </p>
           </div>
 

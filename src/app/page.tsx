@@ -53,7 +53,7 @@ export default async function HomePage() {
                 <span className="h-3 w-3 rounded-full bg-accent-500" />
               </span>
               <span className="font-heading text-[13px] font-bold tracking-[0.16em] text-brand-500">
-                FLORENCE FOUNDATION
+                GRACE COMPASSION CREW FOUNDATION
               </span>
             </div>
             <h1
@@ -177,7 +177,7 @@ export default async function HomePage() {
               Compassion in Action. Hope for Every Community.
             </h2>
             <p className="mb-10 max-w-[520px] text-lg leading-[1.7] text-ink-700">
-              At Florence Foundation, we believe everyone deserves the opportunity to live with
+              At Grace Compassion Crew Foundation, we believe everyone deserves the opportunity to live with
               dignity, access essential resources, and build a better future. Through
               community-centred initiatives and partnerships, we work to alleviate suffering and
               create lasting opportunities.
@@ -247,7 +247,7 @@ export default async function HomePage() {
               A Fresh Hot Meal Can Make a Difference.
             </h2>
             <p className="mb-9 max-w-[520px] text-lg leading-[1.7] text-ink-light">
-              Through our Fresh Hot Meal initiative, Florence Foundation seeks to provide
+              Through our Fresh Hot Meal initiative, Grace Compassion Crew Foundation seeks to provide
               nutritious meals and food support to individuals and families facing hardship.
             </p>
             <div className="mb-9 flex max-w-[520px] items-center gap-6 rounded-3xl bg-ink-800 px-7 py-6">

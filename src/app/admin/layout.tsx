@@ -33,7 +33,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <h1 className="mb-2 font-heading text-xl font-extrabold text-ink-900">Not authorized</h1>
           <p className="mb-6 text-sm leading-relaxed text-ink-600">
             You&apos;re signed in as <strong>{user.email}</strong>, but this account isn&apos;t on the
-            admin allowlist for Florence Foundation. Ask an existing admin to add you.
+            admin allowlist for Grace Compassion Crew Foundation. Ask an existing admin to add you.
           </p>
           <form action={signOut}>
             <button type="submit" className="rounded-full border-2 border-accent-300 px-6 py-3 font-heading text-sm font-bold text-ink-900 hover:bg-accent-50">
@@ -49,7 +49,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="flex min-h-screen bg-surface">
       <aside className="flex w-64 flex-shrink-0 flex-col border-r border-border bg-white">
         <div className="flex items-center gap-2 border-b border-border-4 px-6 py-5">
-          <Image src="/images/logo-color.png" alt="Florence Foundation" width={140} height={36} className="h-9 w-auto" />
+          <Image src="/images/logo-gccf-color.png" alt="Grace Compassion Crew Foundation" width={140} height={36} className="h-9 w-auto" />
         </div>
         <nav className="flex-1 px-3 py-4">
           {navItems.map((item) => (

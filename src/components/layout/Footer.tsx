@@ -19,8 +19,8 @@ export default function Footer({ settings }: { settings: ResolvedSiteSettings })
         <div className="grid gap-12 pb-[72px] sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div className="max-w-[340px]">
             <Image
-              src="/images/logo-white.png"
-              alt="Florence Foundation"
+              src="/images/logo-gccf-white.png"
+              alt="Grace Compassion Crew Foundation"
               width={220}
               height={64}
               className="mb-6 h-16 w-auto"
@@ -63,7 +63,7 @@ export default function Footer({ settings }: { settings: ResolvedSiteSettings })
               href={settings.social.instagram}
               target="_blank"
               rel="noopener"
-              aria-label="Florence Foundation on Instagram"
+              aria-label="Grace Compassion Crew Foundation on Instagram"
               className="mt-1.5 inline-flex items-center gap-2.5 text-base text-white hover:text-brand-200"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-ink-divider">

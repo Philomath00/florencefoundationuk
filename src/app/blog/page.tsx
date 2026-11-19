@@ -8,7 +8,7 @@ import { getSupabaseServer, isSupabaseConfigured } from "@/lib/supabase/server";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "News, stories and updates from Florence Foundation's humanitarian work across the United Kingdom, Nigeria and the wider African continent.",
+    "News, stories and updates from Grace Compassion Crew Foundation's humanitarian work across the United Kingdom, Nigeria and the wider African continent.",
   alternates: { canonical: "/blog" },
 };
 
@@ -48,7 +48,7 @@ export default async function BlogPage() {
         watermark="Stories"
         crumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]}
         title="News & Stories"
-        subtitle="Updates from the Florence Foundation community."
+        subtitle="Updates from the Grace Compassion Crew Foundation community."
       />
 
       <section aria-label="Blog posts" className="bg-white">

@@ -86,7 +86,7 @@ export async function POST(request: Request) {
       const resend = getResend();
       const toAddress = process.env.CONTACT_RECIPIENT_EMAIL || siteConfig.email;
       await resend.emails.send({
-        from: process.env.CONTACT_FROM_EMAIL || "Florence Foundation Website <onboarding@resend.dev>",
+        from: process.env.CONTACT_FROM_EMAIL || "Grace Compassion Crew Foundation Website <onboarding@resend.dev>",
         to: toAddress,
         replyTo: email,
         subject: `Website enquiry: ${type} — ${name}`,

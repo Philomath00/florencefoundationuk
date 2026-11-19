@@ -74,7 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     "@type": "NGO",
     name: settings.name,
     url: settings.url,
-    logo: `${settings.url}/images/logo-color.png`,
+    logo: `${settings.url}/images/logo-gccf-color.png`,
     description: settings.defaultDescription,
     email: settings.email,
     sameAs: [settings.social.instagram],

@@ -8,7 +8,7 @@ import { getAllProjects } from "@/lib/projects-data";
 export const metadata: Metadata = {
   title: "Our Projects",
   description:
-    "Explore Florence Foundation's humanitarian programmes: food aid, child sponsorship, education, women's empowerment, clean water and healthcare across Nigeria and the wider African continent.",
+    "Explore Grace Compassion Crew Foundation's humanitarian programmes: food aid, child sponsorship, education, women's empowerment, clean water and healthcare across Nigeria and the wider African continent.",
   alternates: { canonical: "/projects" },
 };
 
@@ -37,7 +37,7 @@ export default async function ProjectsPage() {
             </h2>
           </div>
           <p className="max-w-[560px] text-lg leading-[1.7] text-ink-700">
-            Florence Foundation responds to humanitarian challenges through programmes that
+            Grace Compassion Crew Foundation responds to humanitarian challenges through programmes that
             address immediate needs while supporting education, health, empowerment, and
             sustainable community wellbeing.
           </p>

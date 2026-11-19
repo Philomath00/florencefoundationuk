@@ -127,7 +127,7 @@ export default function ContactForm() {
           </svg>
         </span>
         <h3 className="mb-2.5 font-heading text-2xl font-extrabold text-ink-900">Thank you, your message has been sent.</h3>
-        <p className="mb-6 text-base leading-relaxed text-ink-700">A member of the Florence Foundation team will reply to you by email.</p>
+        <p className="mb-6 text-base leading-relaxed text-ink-700">A member of the Grace Compassion Crew Foundation team will reply to you by email.</p>
         <button
           type="button"
           onClick={reset}
@@ -255,7 +255,7 @@ export default function ContactForm() {
             aria-invalid={Boolean(errors.consent)}
             className="mt-0.5 h-[22px] w-[22px] flex-shrink-0 accent-brand-500"
           />
-          <span>I agree that Florence Foundation may use these details to respond to my enquiry. <span className="text-accent-800">*</span></span>
+          <span>I agree that Grace Compassion Crew Foundation may use these details to respond to my enquiry. <span className="text-accent-800">*</span></span>
         </label>
         <span className="text-[13px] text-accent-800">{errors.consent}</span>
       </div>

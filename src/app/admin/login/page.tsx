@@ -14,7 +14,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-surface px-6">
       <div className="w-full max-w-[400px]">
         <div className="mb-8 flex justify-center">
-          <Image src="/images/logo-color.png" alt="Florence Foundation" width={180} height={48} className="h-11 w-auto" />
+          <Image src="/images/logo-gccf-color.png" alt="Grace Compassion Crew Foundation" width={180} height={48} className="h-11 w-auto" />
         </div>
         <div className="rounded-[28px] bg-white p-8 shadow-lg">
           <h1 className="mb-2 font-heading text-2xl font-extrabold text-ink-900">Admin sign in</h1>
